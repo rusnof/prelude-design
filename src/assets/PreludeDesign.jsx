@@ -670,7 +670,7 @@ const shown = JOURNAL.filter((a) => cat === "ALL" || a.cat === cat);
 const root = useRef(null);
 
 const [slug, setSlug] = useState(parseRoute);
-  const [team, setTeam] = useState(window.location.hash === "#/team" || window.location.hash === "#/team");
+  const [team, setTeam] = useState(window.location.hash === "#/team");
 const [showNav, setShowNav] = useState(true);
 const [hasScrolled, setHasScrolled] = useState(false);
 const navHiddenOnce = useRef(false);
@@ -683,7 +683,7 @@ const project = WORKS.find((w) => w.slug === slug);
   useEffect(() => {
     const onHash = () => {
       setSlug(parseRoute());
-      setTeam(window.location.hash === "#/team" || window.location.hash === "#/team");
+      setTeam(window.location.hash === "#/team");
     };
 
     window.addEventListener("hashchange", onHash);
@@ -857,7 +857,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
                 key={l}
                 href={hash}
                 className="label navlink"
-                onClick={(e) => {
+                onClick={l === "TEAM" ? undefined : (e) => {
                   if (project || team) navigateFromProject(e, hash);
                   else scrollToSection(e, hash);
                 }}
@@ -1282,7 +1282,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
                 key={l}
                 href={hash}
                 className="label navlink"
-                onClick={(e) => {
+                onClick={l === "TEAM" ? undefined : (e) => {
                   if (project || team) navigateFromProject(e, hash);
                   else scrollToSection(e, hash);
                 }}
