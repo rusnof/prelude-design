@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useLayoutEffect } from "react";
 
 const IMAGES = {
 
-  hero:      { src: "/prelude/hero.jpg", tone: "#DDD8CC", note: "Hand-troweled plaster wall, raking light, vertical crop" },
+  hero:      { src: new URL("./assets/hero.jpg", import.meta.url).href, tone: "#DDD8CC", note: "Hand-troweled plaster wall, raking light, vertical crop" },
 
   immersive: { src: "/prelude/immersive.jpg", tone: "#CFC9BB", note: "Full-width interior with finished wall, wide crop" },
 
@@ -354,7 +354,7 @@ const { src, tone, note } = IMAGES[id];
 
 const [failed, setFailed] = useState(false);
 
-const useFile = USE_PHOTO_FILES && src && !failed;
+const useFile = (id === "hero" || USE_PHOTO_FILES) && src && !failed;
 
   return (
 
