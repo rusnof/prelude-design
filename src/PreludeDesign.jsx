@@ -827,13 +827,11 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
             <h1 className="serif display">
 
-              <span className="line l1">WALLS</span>
+              <span className="line l1">LET YOUR</span>
 
-              <span className="line l2">THAT</span>
+              <span className="line l2">WALLS</span>
 
-              <span className="line l3">TELL</span>
-
-              <span className="line l4 serif-italic">STORIES.</span>
+              <span className="line l3 serif-italic">TALK.</span>
 
             </h1>
 
