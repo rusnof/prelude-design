@@ -22,11 +22,21 @@ const IMAGES = {
 
   studio: { src: "/prelude/studio.jpg", tone: "#D4CEC0", note: "The artist at work in the Riga studio" },
 
-  j1: { src: "/prelude/j1.jpg", tone: "#DAD4C7", note: "Journal — objects" },
+  j1: { src: new URL("./assets/deko-magazine-feature-prelude-design.jpg.webp", import.meta.url).href, tone: "#DAD4C7", note: "Prelude Design featured in DEKO Magazine" },
 
-  j2: { src: "/prelude/j2.jpg", tone: "#CFC9BC", note: "Journal — materials" },
+  dekoStudio: { src: new URL("./assets/prelude-design-studio-edgars-armands.webp", import.meta.url).href, tone: "#D8D2C5", note: "Edgars Puķītis and Armands Dokis in the Prelude Design studio — photo by Lauris Vīksne" },
 
-  j3: { src: "/prelude/j3.jpg", tone: "#E1DCD0", note: "Journal — spaces" },
+  dekoDetails: { src: new URL("./assets/prelude-design-studio-details-surfaces.webp", import.meta.url).href, tone: "#D8D2C5", note: "Details from the Prelude Design studio — photo by Lauris Vīksne" },
+
+  j2: { src: new URL("./assets/Maison.webp", import.meta.url).href, tone: "#CFC9BC", note: "Journal — materials" },
+
+  j3: { src: new URL("./assets/maison-gallery.webp", import.meta.url).href, tone: "#E1DCD0", note: "Maison&Objet Paris 2026 — Prelude Design stand" },
+
+  wallsCover: { src: new URL("./assets/walls-that-remeber.webp", import.meta.url).href, tone: "#D8D2C5", note: "Walls That Remember — Prelude Design artpaper" },
+
+  wallsDetail1: { src: new URL("./assets/LV1_0469_Lauris_Viksne.webp", import.meta.url).href, tone: "#D8D2C5", note: "Handcrafted artpaper detail — photo by Lauris Vīksne" },
+
+  wallsDetail2: { src: new URL("./assets/LV1_0535_Lauris_Viksne.webp", import.meta.url).href, tone: "#D8D2C5", note: "Prelude Design artpaper detail — photo by Lauris Vīksne" },
 
   j4: { src: "/prelude/j4.jpg", tone: "#D5CFC2", note: "Journal — people" },
 
@@ -207,48 +217,85 @@ const JOURNAL = [
   {
     slug: "prelude-design-in-deko-magazine",
     cat: "PEOPLE",
-    title: "Prelude Design in DEKO Magazine",
+    title: "Prelude Design in DEKO Magazine – On Studio Identity, Craft, and Creative Direction",
     read: "6 min",
     img: "j1",
     cls: "j-a",
     date: "11 APRIL 2026",
     intro: "Prelude Design is featured in the April issue of DEKO Magazine, Latvia’s leading publication for interiors, architecture, and design. In the interview, Edgars, Ugis, and Armands reflect on how the studio has developed, what continues to shape its direction, and how Prelude is finding its place within contemporary interiors. For us, the conversation offered a valuable opportunity to pause, speak openly, and define what the studio stands for today.",
-    body: [
-      "The timing felt right. When work has been moving quickly, there is something valuable about being asked to explain what you do and why you do it. It made us step back and think about what Prelude has become, rather than only focusing on what comes next. We have never been interested in creating a broad, ready-made offer simply for the sake of scale. That has never reflected the way we work. We prefer to stay focused, stay close to each project, and respond to every brief on its own terms.",
-      "It may not be the loudest approach, but it is the one that keeps the work honest.",
-      "Prelude is shaped through different kinds of contribution. Armands brings the artistic language and the visual thinking that sit at the centre of the studio’s work. Edgars helps shape direction, structure, and the wider frame around the studio. Ugis works with language, relationships, and the conversations that connect Prelude to the right people and projects. Together, these roles help define how the studio works and how it presents itself.",
-      "Prelude was never meant to revolve around one person alone, but to grow through a combination of creative work, clear thinking, and strong human connection. The studio’s work also relies on a wider team, where every contribution matters to the outcome.",
-      "From the beginning, we never tried to appeal to everyone. That was a conscious decision. Prelude works in a specific niche: artist-designed wallpaper and custom wall coverings created for individual interiors, rather than for a mass market. That choice brings a certain discipline, and that is something we value. We do not see what we make as a standard material to be chosen quickly and applied anywhere.",
-      "For us, it is closer to a creative practice – something shaped by context, conversation, and the distinct character of each space.",
-      "That is also why we no longer think of the catalogue as a finished collection. It works better as an introduction – a set of moods, references, and directions rather than a fixed offer. Clients rarely come to us just to select something off the shelf. More often, they respond to a feeling, a texture, or an atmosphere, and that is where the process begins. From there, we adapt and develop the direction to fit the space, the brief, and the people behind the project.",
-      "Sometimes the adjustments are small, and sometimes they are substantial. In that sense, working with Prelude is less about selection and more about collaboration.",
-      "Prelude is based in Riga, and that remains important to us. At the same time, we have never seen the studio only in local terms. Our clients include architects, interior designers, and project teams from outside Latvia, and we have made a consistent effort to position Prelude within a broader design context. That has happened gradually – through conversations, projects, and exhibitions, rather than through a calculated campaign.",
-      "Milan was part of that path, as were four editions of Maison&Objet in Paris, each one helping place the studio within a wider international landscape. This spring, that journey continues in New York. What we are looking for there is not a more polished version of ourselves, but the right audience for the work we are already doing.",
-      "Prelude is still growing, though not because we are searching for a new identity. The character of the studio already feels clear to us. What is growing is not ambition in the broadest sense, but confidence – the confidence to go further in a direction we already believe in. The conversation with DEKO was a useful reminder of that. Sometimes it takes someone else asking the questions for you to fully see what has already taken shape.",
-      "There is still a great deal ahead of us, but the foundation feels strong: a distinct visual language, a way of working we genuinely value, and a practice that continues to move forward with purpose."
+    contentBlocks: [
+      { type: "heading", text: "A moment to pause" },
+      { type: "text", text: "The timing felt right. When work has been moving quickly, there is something valuable about being asked to explain what you do and why you do it. It made us step back and think about what Prelude has become, rather than only focusing on what comes next. We have never been interested in creating a broad, ready-made offer simply for the sake of scale. That has never reflected the way we work. We prefer to stay focused, stay close to each project, and respond to every brief on its own terms. It may not be the loudest approach, but it is the one that keeps the work honest." },
+      { type: "image", img: "dekoStudio", caption: "Edgars Puķītis and Armands Dokis. Photo by Lauris Vīksne." },
+      { type: "heading", text: "A shared studio identity" },
+      { type: "text", text: "Prelude is shaped through different kinds of contribution. Armands brings the artistic language and the visual thinking that sit at the centre of the studio’s work. Edgars helps shape direction, structure, and the wider frame around the studio. Ugis works with language, relationships, and the conversations that connect Prelude to the right people and projects. Together, these roles help define how the studio works and how it presents itself. Prelude was never meant to revolve around one person alone, but to grow through a combination of creative work, clear thinking, and strong human connection. The studio’s work also relies on a wider team, where every contribution matters to the outcome." },
+      { type: "heading", text: "Choosing a narrow path, deliberately" },
+      { type: "text", text: "From the beginning, we never tried to appeal to everyone. That was a conscious decision. Prelude works in a specific niche: artist-designed wallpaper and custom wall coverings created for individual interiors, rather than for a mass market. That choice brings a certain discipline, and that is something we value. We do not see what we make as a standard material to be chosen quickly and applied anywhere. For us, it is closer to a creative practice – something shaped by context, conversation, and the distinct character of each space." },
+      { type: "image", img: "dekoDetails", caption: "Details from the Prelude Design studio. Photo by Lauris Vīksne." },
+      { type: "heading", text: "The catalogue as a starting point" },
+      { type: "text", text: "That is also why we no longer think of the catalogue as a finished collection. It works better as an introduction – a set of moods, references, and directions rather than a fixed offer. Clients rarely come to us just to select something off the shelf. More often, they respond to a feeling, a texture, or an atmosphere, and that is where the process begins. From there, we adapt and develop the direction to fit the space, the brief, and the people behind the project. Sometimes the adjustments are small, and sometimes they are substantial. In that sense, working with Prelude is less about selection and more about collaboration." },
+      { type: "heading", text: "Latvian roots, broader perspective" },
+      { type: "text", text: "Prelude is based in Riga, and that remains important to us. At the same time, we have never seen the studio only in local terms. Our clients include architects, interior designers, and project teams from outside Latvia, and we have made a consistent effort to position Prelude within a broader design context. That has happened gradually – through conversations, projects, and exhibitions, rather than through a calculated campaign. Milan was part of that path, as were four editions of Maison&Objet in Paris, each one helping place the studio within a wider international landscape. This spring, that journey continues in New York. What we are looking for there is not a more polished version of ourselves, but the right audience for the work we are already doing." },
+      { type: "heading", text: "Still evolving" },
+      { type: "text", text: "Prelude is still growing, though not because we are searching for a new identity. The character of the studio already feels clear to us. What is growing is not ambition in the broadest sense, but confidence – the confidence to go further in a direction we already believe in. The conversation with DEKO was a useful reminder of that. Sometimes it takes someone else asking the questions for you to fully see what has already taken shape. There is still a great deal ahead of us, but the foundation feels strong: a distinct visual language, a way of working we genuinely value, and a practice that continues to move forward with purpose." },
+      { type: "text", text: "Photo by. Lauris Vīksne." }
     ],
+    body: [],
   },
   {
     slug: "walls-that-remember",
-    cat: "MATERIALS",
-    title: "Walls That Remember",
-    read: "ARTICLE",
-    img: "j2",
-    cls: "j-b",
-    date: "27 MARCH 2026",
-    intro: "",
-    body: [],
-  },
+   cat: "MATERIALS",
+   title: "Walls That Remember",
+   subtitle: "Walls That Remember: The Quiet Luxury of Prelude Design",
+   read: "ARTICLE",
+   img: "wallsCover",
+   cls: "j-b",
+   date: "27 MARCH 2026",
+   intro: "",
+   body: [
+      "In a world driven by speed, repetition, and disposable surfaces, Prelude Design moves differently. We create bespoke wallpaper and artist-designed wall coverings for interiors that need more than decoration. They need atmosphere, character, and a sense of memory. Every piece begins not with a trend forecast or a standard template, but with the human hand, real materials, patience, and the belief that walls can carry emotion just as deeply as art can.",
+      "Prelude Design was never meant to be ordinary. It grew from a quieter idea: that the spaces we live in shape us in subtle but lasting ways, and that beauty means more when it carries the mark of its maker. At a time when imagery is instant and so much is mass-produced, we chose a slower approach on purpose. Not because it is easier – it isn’t – but because some things lose their meaning when they are scaled too fast.",
+      "People often describe what we make as custom wallpaper, luxury wallpaper, or designer wallpaper. All of those labels are accurate, but none of them tells the whole story. In the studio, we often think of our work as artpaper. That word feels closer to what we are trying to do. We are not interested in wallpaper as just another building material – something purely practical, chosen only to fill a wall. Our work sits much closer to art that also happens to live on a wall.",
+      "That distinction matters to us. We know our work is not for everyone, and it is not meant to be. It is for people who want a room to have character, not just a finished look. In many cases, a Prelude piece is not made to wrap an entire room from edge to edge. Sometimes it works best on a single accent wall. Sometimes it belongs in a niche, an alcove, a corridor, or one quiet surface that needs presence more than coverage. We do not think every wall should speak. But when one does, it should have something worth saying.",
+      "What matters most to us is not simply covering a wall, but changing how a room feels. A surface can fall back, or it can speak softly. It can flatten a space, or it can give it depth. It can remain in the background, or it can become the quiet center of a home, a hotel, a private room, or a carefully considered interior. That is where our work belongs: in spaces where detail matters, mood matters, and beauty is allowed to reveal itself slowly instead of announcing itself all at once.",
+      "Our process starts in the studio, where every design is first developed by hand. That matters deeply to us. The hand sees differently than software does. It pauses, adjusts, layers, and discovers. It leaves behind small irregularities that are not flaws, but signs of life. In that handmade beginning, there is a kind of intelligence that cannot be fully replicated by automation.",
+      "Handwork is also naturally unpredictable. No matter how experienced the artist, the process is never completely mechanical or entirely repeatable. One gesture lands a little differently. One texture builds more heavily than expected. One decision opens an entirely new direction. Mistakes happen too. They are noticed, studied, corrected, absorbed, or used to guide the next layer. That is part of the truth of making anything by hand. In our work, you can often sense that living process—the searching, the adjusting, the control, and even the brief moments when control slips before it is found again. We do not try to erase that journey. It is part of what gives the final piece depth, tension, and presence.",
+      "Prelude Design is led by artist Armands Dokis, whose experience in this field spans nearly two decades. That long relationship with surface, material, and composition has shaped the studio from the very beginning. Around that artistic core, our small team works closely and deliberately, creating collections and custom pieces that are refined in craft but still alive in feeling. We have stayed intentionally small because scale is not the goal in itself. Intimacy is. Precision is. Attention is.",
+      "Being small allows us to treat each project as a dialogue rather than a transaction. We work with designers, architects, and private clients who are not looking for visual noise, but for something more lasting and personal. Truly bespoke wallpaper should never feel generic once it is placed in a room. It should respond to its setting—to the light, the proportions, the materials around it, and the temperament of the space itself. Sometimes that means adjusting tone. Sometimes scale. Sometimes sheen, rhythm, layering, or restraint. The goal is never excess for its own sake. The goal is harmony with character.",
+      "That is also why customization is central to how we work. We do not see it as an extra feature. It is part of the philosophy. Spaces are different. People are different. The same wall covering will not speak in the same voice everywhere. Some interiors need softness and quiet. Others need contrast, drama, and movement. Some need statement wallpaper that anchors the room. Others need something more intimate—a surface that reveals itself slowly over time, through daylight, shadow, and proximity.",
+      "There is a particular kind of luxury that draws us in, and it has very little to do with excess. True luxury often lives in restraint—in craftsmanship that becomes more apparent the longer you live with it, and in objects that do not need to shout to be noticed. This is the spirit we keep returning to. We care about depth, tactility, calm, and distinction. About rooms that feel composed rather than performed.",
+      "To us, unique wallpaper is not unique simply because it is rare. It is unique because it carries intention. Because it resists imitation. Because it is made with the understanding that interior design, at its best, is not only about beauty, but about emotional precision. The right surface can make a room feel grounded, elevated, contemplative, warm, or quietly unforgettable. It can invite pause. It can slow the eye. It can make room for thought.",
+      "That is why we continue on this path, even when faster and easier ones are everywhere. We still believe in the studio, in craftsmanship, in patience, and in the ongoing conversation between art and interior design. We believe custom wall coverings can hold just as much meaning as the furniture, lighting, or architecture around them. And we believe walls deserve more imagination than they are usually given.",
+      "Prelude Design exists for people who feel the same way—for those who want more than coverage, more than pattern, more than trend. For those who understand that a wall can hold memory, mood, and identity. For those creating spaces with soul.",
+      "In the end, what we do is simple to describe, even if it takes time to make. We create bespoke wallpaper for interiors that want to feel singular, thoughtful, and alive. We choose the handmade path because it preserves nuance. We work slowly because quality has its own rhythm. And we continue because we believe that when art enters everyday architecture, even quietly, it changes how we live."
+],
+   inlineImages: [
+     { after: 4, img: "wallsDetail1", caption: "Photo by Lauris Vīksne" },
+     { after: 8, img: "wallsDetail2", caption: "Prelude Design — handcrafted artpaper" },
+   ],
+   },
   {
     slug: "prelude-design-returns-to-maisonobjet",
     cat: "SPACES",
     title: "Prelude Design Returns to Maison&Objet",
     read: "ARTICLE",
-    img: "j3",
+    img: "j2",
+    galleryImg: "j3",
     cls: "j-c",
     date: "9 JANUARY 2026",
-    intro: "",
-    body: [],
+    intro: "The new year begins with a significant milestone for Prelude Design: our fourth participation in Maison&Objet, the premier international trade fair for interior design, decoration, and lifestyle held at Paris Nord Villepinte Exhibition Centre from January 15 to 19.",
+    body: [
+      "This biannual event, now in its fourth decade, brings together over 2,300 exhibitors and 80,000 visitors from 160 countries to showcase the latest trends in furniture, textiles, tableware, and innovative surfaces.",
+      "For Prelude Design, Maison&Objet offers irreplaceable opportunities to connect with architects, interior designers, and industry leaders who value handcrafted excellence. Unlike many stands filled with elaborate staging, ours remains deliberately ascetic - allowing our wall coverings to speak directly.",
+      "“We want visitors to experience the atmosphere of our Riga studio,” says Lead Designer Armands Dokis. “The environment where ideas are born, refined, and transformed into finished works. This space is special to our entire team, and we bring that sensibility to Paris.”",
+      "Visit us at Hall 2, Stand M92 (Project Sector) to see our latest pieces and discuss how they might integrate with your projects. Whether exploring new commissions or simply experiencing the tactile quality of handcrafted surfaces, we look forward to welcoming you.",
+    ],
+    details: [
+      "Maison&Objet Paris 2026",
+      "January 15-19",
+      "Paris Nord Villepinte Exhibition Centre",
+      "Prelude Design: Hall 2, Stand M92",
+    ],
   },
 
 ];
@@ -395,7 +442,7 @@ const { src, tone, note } = IMAGES[id];
 
 const [failed, setFailed] = useState(false);
 
-const useFile = (id === "hero" || USE_PHOTO_FILES) && src && !failed;
+const useFile = (id === "hero" || id === "j1" || id === "j2" || id === "j3" || id === "wallsCover" || id === "wallsDetail1" || id === "wallsDetail2" || id === "dekoStudio" || id === "dekoDetails" || USE_PHOTO_FILES) && src && !failed;
 
   return (
 
@@ -546,19 +593,55 @@ function JournalArticle({ article }) {
 
         <Photo id={article.img} className="journal-article-cover" />
 
-        {article.intro ? <p className="body journal-article-intro">{article.intro}</p> : null}
+        {article.intro ? <p className={`body journal-article-intro${article.slug === "prelude-design-in-deko-magazine" ? " journal-article-intro-strong" : ""}`}>{article.intro}</p> : null}
       </section>
 
-      <article className="journal-article-body">
-        {article.body.length ? (
-          article.body.map((paragraph, index) => (
-            <p className="body" key={index}>{paragraph}</p>
-          ))
+      <article className={`journal-article-body${article.galleryImg ? " journal-article-body-with-gallery" : ""}${article.contentBlocks ? " journal-article-body-editorial" : ""}`}>
+        {article.contentBlocks ? (
+          <div className="journal-article-copy journal-editorial-copy">
+            {article.contentBlocks.map((block, index) => {
+              if (block.type === "heading") return <h2 className="serif journal-article-subtitle" key={index}>{block.text}</h2>;
+              if (block.type === "image") return (
+                <figure className="journal-inline-image" key={index}>
+                  <Photo id={block.img} className="journal-inline-photo" caption={false} />
+                  {block.caption ? <figcaption className="label muted">{block.caption}</figcaption> : null}
+                </figure>
+              );
+              return <p className="body journal-editorial-paragraph" key={index}>{block.text}</p>;
+            })}
+          </div>
+        ) : article.body.length ? (
+          <div className="journal-article-copy">
+            {article.subtitle ? <h2 className="serif journal-article-subtitle">{article.subtitle}</h2> : null}
+            {article.body.map((paragraph, index) => (
+              <div className="journal-paragraph-group" key={index}>
+                <p className="body">{paragraph}</p>
+                {article.inlineImages?.filter((item) => item.after === index + 1).map((item) => (
+                  <figure className="journal-inline-image" key={item.img}>
+                    <Photo id={item.img} className="journal-inline-photo" caption={false} />
+                    {item.caption ? <figcaption className="label muted">{item.caption}</figcaption> : null}
+                  </figure>
+                ))}
+              </div>
+            ))}
+            {article.details ? (
+              <div className="journal-event-details">
+                <p className="label muted">DETAILS</p>
+                {article.details.map((detail) => <p className="body" key={detail}>{detail}</p>)}
+              </div>
+            ) : null}
+          </div>
         ) : (
           <div className="journal-content-placeholder journal-content-block">
             <p>Article text will be added here.</p>
           </div>
         )}
+        {article.galleryImg ? (
+          <figure className="journal-article-gallery">
+            <Photo id={article.galleryImg} className="journal-gallery-photo" />
+            <figcaption className="label muted">MAISON&OBJET PARIS 2026</figcaption>
+          </figure>
+        ) : null}
       </article>
 
       <div className="journal-article-bottom">
@@ -586,9 +669,9 @@ const folio = (n) => (
 
     <div className="folio">
 
-      <p className="label muted">{n}    PRELUDE DESIGN    WORKS</p>
+      <p className="label muted">{n}    PRELUDE DESIGN    WORKS</p>
 
-      <p className="label muted">WORKS    PRELUDE DESIGN    {n + 1}</p>
+      <p className="label muted">WORKS    PRELUDE DESIGN    {n + 1}</p>
 
     </div>
 
@@ -1320,7 +1403,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
                   <Photo id={a.img} className="j-img" />
 
-                  <p className="label muted j-cat">{a.cat}  /  {a.read}</p>
+                  <p className="label muted j-cat">{a.cat}  /  {a.read}</p>
 
                   <h3 className="serif j-title">{a.title}</h3>
 
@@ -1401,7 +1484,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
           href="#top"
           className="back-top navlink"
           onClick={(e) => {
-            if (project || team) {
+            if (project || team || journalArticle) {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             } else {
@@ -1419,11 +1502,21 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
       <footer className="foot">
 
         <p className="label">
-          <img
-            src="/logo-black.svg"
-            alt="Prelude Design"
-            className="footer-logo"
-          />
+          <a
+            href="#top"
+            className="footer-logo-link"
+            aria-label="Prelude Design - home"
+            onClick={(e) => {
+              if (project || team || journalArticle) navigateFromProject(e, "#top");
+              else scrollToSection(e, "#top");
+            }}
+          >
+            <img
+              src="/logo-black.svg"
+              alt="Prelude Design"
+              className="footer-logo"
+            />
+          </a>
         </p>
 
         <nav className="foot-nav">
@@ -1459,7 +1552,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
             Instagram
           </a>
 
-            /  
+            /  
 
           <a
             href="https://www.linkedin.com/company/prelude-design-studio"
@@ -1470,7 +1563,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
             LinkedIn
           </a>
 
-            /  
+            /  
 
           <a
             href="https://www.facebook.com/prelude.designs"
@@ -1829,10 +1922,30 @@ const css = `
 .journal-article-header{margin:0}
 .journal-article-title{font-size:clamp(42px,6.6vw,100px);line-height:.98;letter-spacing:-.025em;max-width:14ch}
 .journal-article-labels{margin-top:clamp(36px,5.5vw,90px)}
-.journal-article-cover{width:100%;aspect-ratio:16/9;max-height:780px;margin-top:clamp(28px,3.5vw,56px)}
-.journal-article-intro{font-size:clamp(19px,2.1vw,28px);line-height:1.45;max-width:38ch;margin:clamp(44px,7vw,88px) 0 0 auto}
+.journal-article-cover{width:92%;aspect-ratio:16/9;max-height:680px;margin:clamp(28px,3.5vw,56px) auto 0}
+.journal-article-intro{font-size:clamp(19px,2.1vw,28px);line-height:1.45;max-width:38ch;margin:clamp(44px,7vw,88px) 8% 0 auto}
+.journal-article-intro-strong{font-weight:600}
 .journal-article-body{width:min(100% - var(--pad) * 2,680px);margin:clamp(64px,9vw,120px) auto 0}
-.journal-article-body>.body{font-size:clamp(17px,1.35vw,20px);line-height:1.85;margin:0 0 1.5em}
+.journal-article-body-with-gallery{width:min(100% - var(--pad) * 2,1100px);display:grid;grid-template-columns:minmax(0,7fr) minmax(220px,4fr);column-gap:clamp(36px,7vw,110px);align-items:start}
+.journal-article-copy{max-width:680px}
+.journal-article-body-editorial{width:min(100% - var(--pad) * 2,760px)}
+.journal-editorial-copy{max-width:760px}
+.journal-editorial-paragraph{font-size:clamp(17px,1.15vw,19px);line-height:1.85;margin:0 0 1.5em}
+.journal-editorial-copy .journal-article-subtitle{margin:clamp(48px,6vw,82px) 0 22px}
+.journal-editorial-copy .journal-inline-image{margin:clamp(36px,5vw,60px) 0}
+.footer-logo-link{display:inline-block;line-height:0}
+.journal-article-copy>.body{font-size:clamp(17px,1.15vw,19px);line-height:1.85;margin:0 0 1.5em}
+.journal-article-subtitle{font-size:clamp(28px,3.2vw,44px);line-height:1.12;letter-spacing:-.02em;margin:0 0 1.2em}
+.journal-paragraph-group>.body{font-size:clamp(17px,1.15vw,19px);line-height:1.85;margin:0 0 1.5em}
+.journal-inline-image{margin:clamp(36px,5vw,68px) 0;max-width:100%}
+.journal-inline-photo{width:100%;aspect-ratio:3/2}
+.journal-inline-image figcaption{margin-top:12px;line-height:1.7}
+.journal-article-gallery{position:sticky;top:100px;margin-top:clamp(20px,8vw,120px)}
+.journal-gallery-photo{aspect-ratio:3/4}
+.journal-article-gallery figcaption{margin-top:12px;line-height:1.7}
+.journal-event-details{border-top:1px solid var(--line);margin-top:clamp(48px,7vw,96px);padding-top:22px}
+.journal-event-details>.label{margin-bottom:18px}
+.journal-event-details>.body{font-size:14px;line-height:1.7;margin:0 0 8px}
 .journal-content-placeholder{opacity:.65;font-size:13px;letter-spacing:.04em}
 .journal-content-block{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;line-height:1.8}
 .journal-content-block p{margin:0 0 1em}
@@ -1981,9 +2094,12 @@ const css = `
   .journal-article-title{font-size:clamp(42px,12vw,72px)}
   .journal-article-labels{flex-direction:column;gap:10px}
   .journal-article-labels .label:nth-child(n){text-align:left}
-  .journal-article-cover{aspect-ratio:4/5}
-  .journal-article-intro{margin-top:40px}
+  .journal-article-cover{width:100%;aspect-ratio:4/5}
+  .journal-article-intro{margin:40px 0 0 auto}
   .journal-article-body{margin-top:48px}
+  .journal-article-body-with-gallery{display:flex;flex-direction:column;gap:40px}
+  .journal-article-gallery{position:static;width:78%;margin:12px 0 0 auto}
+  .journal-article-copy{width:100%}
 
   .sec{padding-top:112px}
 
