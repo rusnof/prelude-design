@@ -217,7 +217,7 @@ const JOURNAL = [
   {
     slug: "prelude-design-in-deko-magazine",
     cat: "PEOPLE",
-    title: "Prelude Design in DEKO Magazine – On Studio Identity, Craft, and Creative Direction",
+    title: "Prelude Design in DEKO Magazine",
     read: "6 min",
     img: "j1",
     cls: "j-a",
@@ -1592,20 +1592,20 @@ const css = `
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap');
 
-@font-face {
-  font-family: 'Epilogue';
-  src: url('/fonts/Epilogue-VariableFont_wght.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
+@font-face{
+  font-family:'Epilogue';
+  src:url('/fonts/Epilogue/Epilogue-VariableFont_wght.ttf') format('truetype');
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
 }
 
-@font-face {
-  font-family: 'Epilogue';
-  src: url('/fonts/Epilogue-Italic-VariableFont_wght.ttf') format('truetype');
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
+@font-face{
+  font-family:'Epilogue';
+  src:url('/fonts/Epilogue/Epilogue-Italic-VariableFont_wght.ttf') format('truetype');
+  font-style:italic;
+  font-weight:100 900;
+  font-display:swap;
 }
 
 
@@ -1920,11 +1920,11 @@ const css = `
 .journal-article-top{padding-top:96px}
 .journal-article-cover-section{padding:clamp(56px,8vw,130px) var(--pad) 0}
 .journal-article-header{margin:0}
-.journal-article-title{font-size:clamp(42px,6.6vw,100px);line-height:.98;letter-spacing:-.025em;max-width:14ch}
+.journal-article-title{font-size:clamp(36px,4.5vw,68px);line-height:1.08;letter-spacing:-.025em;font-weight:300;max-width:16ch}
 .journal-article-labels{margin-top:clamp(36px,5.5vw,90px)}
 .journal-article-cover{width:92%;aspect-ratio:16/9;max-height:680px;margin:clamp(28px,3.5vw,56px) auto 0}
-.journal-article-intro{font-size:clamp(19px,2.1vw,28px);line-height:1.45;max-width:38ch;margin:clamp(44px,7vw,88px) 8% 0 auto}
-.journal-article-intro-strong{font-weight:600}
+.journal-article-intro{font-size:clamp(17px,1.45vw,21px);line-height:1.7;font-weight:400;max-width:48ch;margin:clamp(36px,5vw,64px) 8% 0 auto}
+.journal-article-intro-strong{font-weight:400}
 .journal-article-body{width:min(100% - var(--pad) * 2,680px);margin:clamp(64px,9vw,120px) auto 0}
 .journal-article-body-with-gallery{width:min(100% - var(--pad) * 2,1100px);display:grid;grid-template-columns:minmax(0,7fr) minmax(220px,4fr);column-gap:clamp(36px,7vw,110px);align-items:start}
 .journal-article-copy{max-width:680px}
@@ -2091,11 +2091,11 @@ const css = `
 
   .journal-article-top{padding-top:86px}
   .journal-article-cover-section{padding-top:clamp(56px,8vw,80px)}
-  .journal-article-title{font-size:clamp(42px,12vw,72px)}
+  .journal-article-title{font-size:clamp(34px,9vw,52px);line-height:1.08}
   .journal-article-labels{flex-direction:column;gap:10px}
   .journal-article-labels .label:nth-child(n){text-align:left}
   .journal-article-cover{width:100%;aspect-ratio:4/5}
-  .journal-article-intro{margin:40px 0 0 auto}
+  .journal-article-intro{font-size:17px;line-height:1.7;margin:36px 0 0 auto}
   .journal-article-body{margin-top:48px}
   .journal-article-body-with-gallery{display:flex;flex-direction:column;gap:40px}
   .journal-article-gallery{position:static;width:78%;margin:12px 0 0 auto}
