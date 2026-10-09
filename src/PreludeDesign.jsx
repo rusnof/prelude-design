@@ -204,13 +204,46 @@ const PROCESS = [
 
 const JOURNAL = [
 
-  { cat: "OBJECTS", title: "The brush that outlived three studios", read: "6 min", img: "j1", cls: "j-a" },
-
-  { cat: "MATERIALS", title: "Why gold leaf is never quite flat", read: "9 min", img: "j2", cls: "j-b" },
-
-  { cat: "SPACES", title: "A stairwell, repainted by daylight", read: "5 min", img: "j3", cls: "j-c" },
-
-  { cat: "PEOPLE", title: "Conversations with the architects of Riga", read: "12 min", img: "j4", cls: "j-d" },
+  {
+    slug: "the-brush-that-outlived-three-studios",
+    cat: "OBJECTS",
+    title: "The brush that outlived three studios",
+    read: "6 min",
+    img: "j1",
+    cls: "j-a",
+    intro: "",
+    body: [],
+  },
+  {
+    slug: "why-gold-leaf-is-never-quite-flat",
+    cat: "MATERIALS",
+    title: "Why gold leaf is never quite flat",
+    read: "9 min",
+    img: "j2",
+    cls: "j-b",
+    intro: "",
+    body: [],
+  },
+  {
+    slug: "a-stairwell-repainted-by-daylight",
+    cat: "SPACES",
+    title: "A stairwell, repainted by daylight",
+    read: "5 min",
+    img: "j3",
+    cls: "j-c",
+    intro: "",
+    body: [],
+  },
+  {
+    slug: "conversations-with-the-architects-of-riga",
+    cat: "PEOPLE",
+    title: "Conversations with the architects of Riga",
+    read: "12 min",
+    img: "j4",
+    cls: "j-d",
+    intro: "",
+    body: [],
+  },
 
 ];
 
@@ -391,6 +424,11 @@ const m = window.location.hash.match(/^#\/project\/([\w-]+)/);
 
 };
 
+const parseJournalRoute = () => {
+  const m = window.location.hash.match(/^#\/journal\/([\w-]+)/);
+  return m ? m[1] : null;
+};
+
 
 
 function Opening({ text }) {
@@ -469,6 +507,45 @@ function TeamPage() {
         <p className="serif team-quote">Good work is always a collaboration.</p>
         <a href="#contact" className="label view">GET IN TOUCH →</a>
       </section>
+    </main>
+  );
+}
+
+function JournalArticle({ article }) {
+  return (
+    <main className="journal-article">
+      <div className="journal-article-top">
+        <a href="#journal" className="label navlink journal-back">← BACK TO JOURNAL</a>
+        <span className="label muted">{article.cat} / {article.read} READ</span>
+      </div>
+      <header className="journal-article-header">
+        <p className="label muted journal-article-kicker">PRELUDE DESIGN / JOURNAL</p>
+        <h1 className="serif journal-article-title">{article.title}</h1>
+        {article.intro ? (
+          <p className="body journal-article-intro">{article.intro}</p>
+        ) : (
+          <p className="body muted journal-content-placeholder">INTRODUCTION - CONTENT TO BE ADDED</p>
+        )}
+      </header>
+      <Photo id={article.img} className="journal-article-cover" />
+      <article className="journal-article-body">
+        {article.body.length ? (
+          article.body.map((paragraph, index) => (
+            <p className="body" key={index}>{paragraph}</p>
+          ))
+        ) : (
+          <>
+            <p className="label muted journal-content-label">ARTICLE TEXT</p>
+            <div className="journal-content-placeholder journal-content-block">
+              <p>Article text will be added here.</p>
+              <p>Additional paragraphs and subheadings can be added as the final copy is prepared.</p>
+            </div>
+          </>
+        )}
+      </article>
+      <div className="journal-article-bottom">
+        <a href="#journal" className="label view">← ALL JOURNAL ARTICLES</a>
+      </div>
     </main>
   );
 }
@@ -680,23 +757,33 @@ const root = useRef(null);
 
 // route = what the URL hash says right now; view = what is actually on screen.
   // they differ only during the fade between pages.
-  const [route, setRoute] = useState(() => ({ slug: parseRoute(), team: isTeamRoute() }));
+  const [route, setRoute] = useState(() => ({
+    slug: parseRoute(),
+    team: isTeamRoute(),
+    journalSlug: parseJournalRoute(),
+  }));
   const [view, setView] = useState(route);
   const [pageOut, setPageOut] = useState(false);
   const slug = view.slug;
   const team = view.team;
+  const journalSlug = view.journalSlug;
 const [showNav, setShowNav] = useState(true);
 const [hasScrolled, setHasScrolled] = useState(false);
 const navHiddenOnce = useRef(false);
 const navRevealed = useRef(false);
 
 const project = WORKS.find((w) => w.slug === slug);
+const journalArticle = JOURNAL.find((a) => a.slug === journalSlug);
 
 
 
   useEffect(() => {
     const onHash = () => {
-      setRoute({ slug: parseRoute(), team: isTeamRoute() });
+      setRoute({
+        slug: parseRoute(),
+        team: isTeamRoute(),
+        journalSlug: parseJournalRoute(),
+      });
     };
 
     window.addEventListener("hashchange", onHash);
@@ -706,7 +793,11 @@ const project = WORKS.find((w) => w.slug === slug);
 
   // smooth page change: fade the current page out, swap it, fade the new one in
   useEffect(() => {
-    if (route.slug === view.slug && route.team === view.team) {
+    if (
+      route.slug === view.slug &&
+      route.team === view.team &&
+      route.journalSlug === view.journalSlug
+    ) {
       setPageOut(false);
       return;
     }
@@ -767,7 +858,7 @@ const project = WORKS.find((w) => w.slug === slug);
     setShowNav(true);
     navHiddenOnce.current = false;
     navRevealed.current = false;
-  }, [slug, team]);
+  }, [slug, team, journalSlug]);
 
   const navigateFromProject = (e, hash) => {
     e.preventDefault();
@@ -804,7 +895,7 @@ const h = window.location.hash.slice(1);
 
     else document.getElementById(h)?.scrollIntoView();
 
-  }, [project?.slug, team]);
+  }, [project?.slug, team, journalArticle?.slug]);
 
 
 
@@ -856,7 +947,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
     return () => io.disconnect();
 
-  }, [cat, slug, team]);
+  }, [cat, slug, team, journalArticle?.slug]);
 
 
 
@@ -880,7 +971,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
           href="#top"
           className="brand"
           onClick={(e) => {
-            if (project || team) navigateFromProject(e, "#top");
+            if (project || team || journalArticle) navigateFromProject(e, "#top");
             else scrollToSection(e, "#top");
           }}
           aria-label="Prelude Design"
@@ -899,7 +990,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
                 href={hash}
                 className="label navlink"
                 onClick={(e) => {
-                  if (project || team) navigateFromProject(e, hash);
+                  if (project || team || journalArticle) navigateFromProject(e, hash);
                   else scrollToSection(e, hash);
                 }}
               >
@@ -916,7 +1007,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
       <div className={`page${pageOut ? " page-out" : ""}`}>
 
-      {project ? <ProjectPage project={project} /> : team ? <TeamPage /> : (
+      {project ? <ProjectPage project={project} /> : team ? <TeamPage /> : journalArticle ? <JournalArticle article={journalArticle} /> : (
 
       <main id="top">
 
@@ -1207,7 +1298,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
               <article key={a.title} className={`j-item ${shown.length === 4 ? a.cls : `j-solo j-solo-${i % 2}`}`}>
 
-                <a href="#journal" className="work-link">
+                <a href={`#/journal/${a.slug}`} className="work-link">
 
                   <Photo id={a.img} className="j-img" />
 
@@ -1328,7 +1419,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
                 href={hash}
                 className="label navlink"
                 onClick={(e) => {
-                  if (project || team) navigateFromProject(e, hash);
+                  if (project || team || journalArticle) navigateFromProject(e, hash);
                   else scrollToSection(e, hash);
                 }}
               >
@@ -1712,6 +1803,24 @@ const css = `
 
 
 
+/* JOURNAL ARTICLE */
+
+.journal-article{padding:clamp(112px,14vw,190px) var(--pad) clamp(100px,12vw,160px)}
+.journal-article-top{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:clamp(48px,8vw,112px);border-bottom:1px solid var(--line)}
+.journal-back{text-decoration:none}
+.journal-article-header{max-width:920px;margin:clamp(64px,10vw,132px) auto clamp(44px,7vw,88px)}
+.journal-article-kicker{margin-bottom:24px}
+.journal-article-title{font-size:clamp(44px,8vw,112px);line-height:.98;letter-spacing:-.035em;max-width:12ch}
+.journal-article-intro{font-size:clamp(19px,2.1vw,28px);line-height:1.45;max-width:38ch;margin-top:32px}
+.journal-article-cover{width:100%;aspect-ratio:16/9;max-height:780px}
+.journal-article-body{width:min(100%,680px);margin:clamp(64px,9vw,120px) auto 0}
+.journal-article-body>.body{font-size:clamp(17px,1.35vw,20px);line-height:1.85;margin:0 0 1.5em}
+.journal-content-placeholder{opacity:.65;font-size:13px;letter-spacing:.04em}
+.journal-content-label{margin-bottom:18px}
+.journal-content-block{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;line-height:1.8}
+.journal-content-block p{margin:0 0 1em}
+.journal-content-block p:last-child{margin-bottom:0}
+
 /* SOCIAL */
 
 .soc-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:20px;row-gap:20px;align-items:start}
@@ -1848,6 +1957,14 @@ const css = `
   .scroll{position:static;transform:none;display:flex;padding:32px var(--pad) 40px;align-items:center}
 
 
+
+  .journal-article{padding-top:104px}
+  .journal-article-top{align-items:flex-start;flex-direction:column;gap:12px;padding-bottom:36px}
+  .journal-article-header{margin:56px 0 36px}
+  .journal-article-title{font-size:clamp(42px,13vw,72px)}
+  .journal-article-intro{margin-top:24px}
+  .journal-article-cover{aspect-ratio:4/5}
+  .journal-article-body{margin-top:48px}
 
   .sec{padding-top:112px}
 
