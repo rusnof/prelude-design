@@ -212,24 +212,30 @@ const JOURNAL = [
     img: "j1",
     cls: "j-a",
     date: "11 APRIL 2026",
-    sourceUrl: "https://prelude.design/2026/04/11/prelude-design-in-deko-magazine/",
-    intro: "Prelude Design is featured in the April issue of DEKO Magazine. In the interview, Edgars, Ugis, and Armands reflect on the studio’s development, its creative direction, and the values shaping its work.",
+    intro: "Prelude Design is featured in the April issue of DEKO Magazine, Latvia’s leading publication for interiors, architecture, and design. In the interview, Edgars, Ugis, and Armands reflect on how the studio has developed, what continues to shape its direction, and how Prelude is finding its place within contemporary interiors. For us, the conversation offered a valuable opportunity to pause, speak openly, and define what the studio stands for today.",
     body: [
-      "The conversation offered the studio an opportunity to pause and define what Prelude stands for today. Rather than building a broad, ready-made offer, the studio chooses to stay focused, work closely with each project, and respond to every brief on its own terms.",
-      "Prelude’s identity is shaped by different contributions: Armands brings the artistic language and visual thinking, Edgars helps shape direction and structure, and Ugis works with language and relationships. Together, they support a practice built around creative work, clear thinking, and human connection.",
-      "The studio specialises in artist-designed wallpaper and custom wall coverings for individual interiors. Its catalogue is a starting point rather than a fixed offer: projects develop through conversation, material, atmosphere, and the character of each space.",
-      "Based in Riga, Prelude also works within a wider international design context. Exhibitions in Milan and four editions of Maison&Objet in Paris have helped the studio connect with audiences beyond Latvia, with its journey continuing in New York."
+      "The timing felt right. When work has been moving quickly, there is something valuable about being asked to explain what you do and why you do it. It made us step back and think about what Prelude has become, rather than only focusing on what comes next. We have never been interested in creating a broad, ready-made offer simply for the sake of scale. That has never reflected the way we work. We prefer to stay focused, stay close to each project, and respond to every brief on its own terms.",
+      "It may not be the loudest approach, but it is the one that keeps the work honest.",
+      "Prelude is shaped through different kinds of contribution. Armands brings the artistic language and the visual thinking that sit at the centre of the studio’s work. Edgars helps shape direction, structure, and the wider frame around the studio. Ugis works with language, relationships, and the conversations that connect Prelude to the right people and projects. Together, these roles help define how the studio works and how it presents itself.",
+      "Prelude was never meant to revolve around one person alone, but to grow through a combination of creative work, clear thinking, and strong human connection. The studio’s work also relies on a wider team, where every contribution matters to the outcome.",
+      "From the beginning, we never tried to appeal to everyone. That was a conscious decision. Prelude works in a specific niche: artist-designed wallpaper and custom wall coverings created for individual interiors, rather than for a mass market. That choice brings a certain discipline, and that is something we value. We do not see what we make as a standard material to be chosen quickly and applied anywhere.",
+      "For us, it is closer to a creative practice – something shaped by context, conversation, and the distinct character of each space.",
+      "That is also why we no longer think of the catalogue as a finished collection. It works better as an introduction – a set of moods, references, and directions rather than a fixed offer. Clients rarely come to us just to select something off the shelf. More often, they respond to a feeling, a texture, or an atmosphere, and that is where the process begins. From there, we adapt and develop the direction to fit the space, the brief, and the people behind the project.",
+      "Sometimes the adjustments are small, and sometimes they are substantial. In that sense, working with Prelude is less about selection and more about collaboration.",
+      "Prelude is based in Riga, and that remains important to us. At the same time, we have never seen the studio only in local terms. Our clients include architects, interior designers, and project teams from outside Latvia, and we have made a consistent effort to position Prelude within a broader design context. That has happened gradually – through conversations, projects, and exhibitions, rather than through a calculated campaign.",
+      "Milan was part of that path, as were four editions of Maison&Objet in Paris, each one helping place the studio within a wider international landscape. This spring, that journey continues in New York. What we are looking for there is not a more polished version of ourselves, but the right audience for the work we are already doing.",
+      "Prelude is still growing, though not because we are searching for a new identity. The character of the studio already feels clear to us. What is growing is not ambition in the broadest sense, but confidence – the confidence to go further in a direction we already believe in. The conversation with DEKO was a useful reminder of that. Sometimes it takes someone else asking the questions for you to fully see what has already taken shape.",
+      "There is still a great deal ahead of us, but the foundation feels strong: a distinct visual language, a way of working we genuinely value, and a practice that continues to move forward with purpose."
     ],
   },
   {
     slug: "walls-that-remember",
     cat: "MATERIALS",
     title: "Walls That Remember",
-    read: "Read article",
+    read: "ARTICLE",
     img: "j2",
     cls: "j-b",
     date: "27 MARCH 2026",
-    sourceUrl: "https://prelude.design/2026/03/27/walls-that-remember/",
     intro: "",
     body: [],
   },
@@ -237,11 +243,10 @@ const JOURNAL = [
     slug: "prelude-design-returns-to-maisonobjet",
     cat: "SPACES",
     title: "Prelude Design Returns to Maison&Objet",
-    read: "Read article",
+    read: "ARTICLE",
     img: "j3",
     cls: "j-c",
     date: "9 JANUARY 2026",
-    sourceUrl: "https://prelude.design/2026/01/09/prelude-design-returns-to-maisonobjet/",
     intro: "",
     body: [],
   },
@@ -513,35 +518,51 @@ function TeamPage() {
 }
 
 function JournalArticle({ article }) {
+  const articleIndex = JOURNAL.findIndex((item) => item.slug === article.slug) + 1;
+
   return (
     <main className="journal-article">
-      <div className="journal-article-top">
-        <a href="#journal" className="label navlink journal-back">← BACK TO JOURNAL</a>
-        <span className="label muted">{article.date} / {article.cat} / {article.read}</span>
+      <div className="p-top journal-article-top">
+        <a
+          href="#journal"
+          className="label navlink"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.hash = "#journal";
+          }}
+        >← BACK TO JOURNAL</a>
+        <span className="label muted">{String(articleIndex).padStart(2, "0")} / {String(JOURNAL.length).padStart(2, "0")}</span>
       </div>
-      <header className="journal-article-header">
-        <p className="label muted journal-article-kicker">PRELUDE DESIGN / JOURNAL</p>
-        <h1 className="serif journal-article-title">{article.title}</h1>
-        {article.intro ? (
-          <p className="body journal-article-intro">{article.intro}</p>
-        ) : null}
-      </header>
-      <Photo id={article.img} className="journal-article-cover" />
+
+      <section className="journal-article-cover-section">
+        <header className="journal-article-header">
+          <h1 className="serif journal-article-title">{article.title}</h1>
+          <div className="mg-labels journal-article-labels">
+            <span className="label">{article.date}</span>
+            <span className="label">{article.cat}</span>
+            <span className="label">{article.read === "ARTICLE" ? "READ ARTICLE" : article.read.toUpperCase() + " READ"}</span>
+          </div>
+        </header>
+
+        <Photo id={article.img} className="journal-article-cover" />
+
+        {article.intro ? <p className="body journal-article-intro">{article.intro}</p> : null}
+      </section>
+
       <article className="journal-article-body">
         {article.body.length ? (
           article.body.map((paragraph, index) => (
             <p className="body" key={index}>{paragraph}</p>
           ))
         ) : (
-          <div className="journal-source-note">
-            <p className="body muted">The full article is available on the original Prelude Design website.</p>
-            <a className="label view" href={article.sourceUrl} target="_blank" rel="noreferrer">READ FULL ARTICLE ON PRELUDE.DESIGN ↗</a>
+          <div className="journal-content-placeholder journal-content-block">
+            <p>Article text will be added here.</p>
           </div>
         )}
       </article>
+
       <div className="journal-article-bottom">
         <a href="#journal" className="label view">← ALL JOURNAL ARTICLES</a>
-        <a href={article.sourceUrl} target="_blank" rel="noreferrer" className="label view">ORIGINAL ARTICLE ↗</a>
       </div>
     </main>
   );
@@ -1800,26 +1821,23 @@ const css = `
 
 
 
-/* JOURNAL ARTICLE */
+/* JOURNAL ARTICLE - aligned with Works project cover */
 
-.journal-article{padding:clamp(112px,14vw,190px) var(--pad) clamp(100px,12vw,160px)}
-.journal-article-top{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:clamp(48px,8vw,112px);border-bottom:1px solid var(--line)}
-.journal-back{text-decoration:none}
-.journal-article-header{max-width:920px;margin:clamp(64px,10vw,132px) auto clamp(44px,7vw,88px)}
-.journal-article-kicker{margin-bottom:24px}
-.journal-article-title{font-size:clamp(44px,8vw,112px);line-height:.98;letter-spacing:-.035em;max-width:12ch}
-.journal-article-intro{font-size:clamp(19px,2.1vw,28px);line-height:1.45;max-width:38ch;margin-top:32px}
-.journal-article-cover{width:100%;aspect-ratio:16/9;max-height:780px}
-.journal-article-body{width:min(100%,680px);margin:clamp(64px,9vw,120px) auto 0}
+.journal-article{padding:0 0 clamp(100px,12vw,160px)}
+.journal-article-top{padding-top:96px}
+.journal-article-cover-section{padding:clamp(56px,8vw,130px) var(--pad) 0}
+.journal-article-header{margin:0}
+.journal-article-title{font-size:clamp(42px,6.6vw,100px);line-height:.98;letter-spacing:-.025em;max-width:14ch}
+.journal-article-labels{margin-top:clamp(36px,5.5vw,90px)}
+.journal-article-cover{width:100%;aspect-ratio:16/9;max-height:780px;margin-top:clamp(28px,3.5vw,56px)}
+.journal-article-intro{font-size:clamp(19px,2.1vw,28px);line-height:1.45;max-width:38ch;margin:clamp(44px,7vw,88px) 0 0 auto}
+.journal-article-body{width:min(100% - var(--pad) * 2,680px);margin:clamp(64px,9vw,120px) auto 0}
 .journal-article-body>.body{font-size:clamp(17px,1.35vw,20px);line-height:1.85;margin:0 0 1.5em}
 .journal-content-placeholder{opacity:.65;font-size:13px;letter-spacing:.04em}
-.journal-content-label{margin-bottom:18px}
 .journal-content-block{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;line-height:1.8}
 .journal-content-block p{margin:0 0 1em}
 .journal-content-block p:last-child{margin-bottom:0}
-.journal-source-note{padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:18px}
-.journal-source-note .view{text-decoration:none}
-.journal-article-bottom{gap:24px;flex-wrap:wrap}
+.journal-article-bottom{display:flex;justify-content:flex-start;margin-top:clamp(72px,10vw,140px);padding:24px var(--pad) 0;border-top:1px solid var(--line)}
 
 /* SOCIAL */
 
@@ -1958,12 +1976,13 @@ const css = `
 
 
 
-  .journal-article{padding-top:104px}
-  .journal-article-top{align-items:flex-start;flex-direction:column;gap:12px;padding-bottom:36px}
-  .journal-article-header{margin:56px 0 36px}
-  .journal-article-title{font-size:clamp(42px,13vw,72px)}
-  .journal-article-intro{margin-top:24px}
+  .journal-article-top{padding-top:86px}
+  .journal-article-cover-section{padding-top:clamp(56px,8vw,80px)}
+  .journal-article-title{font-size:clamp(42px,12vw,72px)}
+  .journal-article-labels{flex-direction:column;gap:10px}
+  .journal-article-labels .label:nth-child(n){text-align:left}
   .journal-article-cover{aspect-ratio:4/5}
+  .journal-article-intro{margin-top:40px}
   .journal-article-body{margin-top:48px}
 
   .sec{padding-top:112px}
