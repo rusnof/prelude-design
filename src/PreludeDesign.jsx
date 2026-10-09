@@ -205,42 +205,43 @@ const PROCESS = [
 const JOURNAL = [
 
   {
-    slug: "the-brush-that-outlived-three-studios",
-    cat: "OBJECTS",
-    title: "The brush that outlived three studios",
+    slug: "prelude-design-in-deko-magazine",
+    cat: "PEOPLE",
+    title: "Prelude Design in DEKO Magazine",
     read: "6 min",
     img: "j1",
     cls: "j-a",
-    intro: "",
-    body: [],
+    date: "11 APRIL 2026",
+    sourceUrl: "https://prelude.design/2026/04/11/prelude-design-in-deko-magazine/",
+    intro: "Prelude Design is featured in the April issue of DEKO Magazine. In the interview, Edgars, Ugis, and Armands reflect on the studio’s development, its creative direction, and the values shaping its work.",
+    body: [
+      "The conversation offered the studio an opportunity to pause and define what Prelude stands for today. Rather than building a broad, ready-made offer, the studio chooses to stay focused, work closely with each project, and respond to every brief on its own terms.",
+      "Prelude’s identity is shaped by different contributions: Armands brings the artistic language and visual thinking, Edgars helps shape direction and structure, and Ugis works with language and relationships. Together, they support a practice built around creative work, clear thinking, and human connection.",
+      "The studio specialises in artist-designed wallpaper and custom wall coverings for individual interiors. Its catalogue is a starting point rather than a fixed offer: projects develop through conversation, material, atmosphere, and the character of each space.",
+      "Based in Riga, Prelude also works within a wider international design context. Exhibitions in Milan and four editions of Maison&Objet in Paris have helped the studio connect with audiences beyond Latvia, with its journey continuing in New York."
+    ],
   },
   {
-    slug: "why-gold-leaf-is-never-quite-flat",
+    slug: "walls-that-remember",
     cat: "MATERIALS",
-    title: "Why gold leaf is never quite flat",
-    read: "9 min",
+    title: "Walls That Remember",
+    read: "Read article",
     img: "j2",
     cls: "j-b",
+    date: "27 MARCH 2026",
+    sourceUrl: "https://prelude.design/2026/03/27/walls-that-remember/",
     intro: "",
     body: [],
   },
   {
-    slug: "a-stairwell-repainted-by-daylight",
+    slug: "prelude-design-returns-to-maisonobjet",
     cat: "SPACES",
-    title: "A stairwell, repainted by daylight",
-    read: "5 min",
+    title: "Prelude Design Returns to Maison&Objet",
+    read: "Read article",
     img: "j3",
     cls: "j-c",
-    intro: "",
-    body: [],
-  },
-  {
-    slug: "conversations-with-the-architects-of-riga",
-    cat: "PEOPLE",
-    title: "Conversations with the architects of Riga",
-    read: "12 min",
-    img: "j4",
-    cls: "j-d",
+    date: "9 JANUARY 2026",
+    sourceUrl: "https://prelude.design/2026/01/09/prelude-design-returns-to-maisonobjet/",
     intro: "",
     body: [],
   },
@@ -516,16 +517,14 @@ function JournalArticle({ article }) {
     <main className="journal-article">
       <div className="journal-article-top">
         <a href="#journal" className="label navlink journal-back">← BACK TO JOURNAL</a>
-        <span className="label muted">{article.cat} / {article.read} READ</span>
+        <span className="label muted">{article.date} / {article.cat} / {article.read}</span>
       </div>
       <header className="journal-article-header">
         <p className="label muted journal-article-kicker">PRELUDE DESIGN / JOURNAL</p>
         <h1 className="serif journal-article-title">{article.title}</h1>
         {article.intro ? (
           <p className="body journal-article-intro">{article.intro}</p>
-        ) : (
-          <p className="body muted journal-content-placeholder">INTRODUCTION - CONTENT TO BE ADDED</p>
-        )}
+        ) : null}
       </header>
       <Photo id={article.img} className="journal-article-cover" />
       <article className="journal-article-body">
@@ -534,17 +533,15 @@ function JournalArticle({ article }) {
             <p className="body" key={index}>{paragraph}</p>
           ))
         ) : (
-          <>
-            <p className="label muted journal-content-label">ARTICLE TEXT</p>
-            <div className="journal-content-placeholder journal-content-block">
-              <p>Article text will be added here.</p>
-              <p>Additional paragraphs and subheadings can be added as the final copy is prepared.</p>
-            </div>
-          </>
+          <div className="journal-source-note">
+            <p className="body muted">The full article is available on the original Prelude Design website.</p>
+            <a className="label view" href={article.sourceUrl} target="_blank" rel="noreferrer">READ FULL ARTICLE ON PRELUDE.DESIGN ↗</a>
+          </div>
         )}
       </article>
       <div className="journal-article-bottom">
         <a href="#journal" className="label view">← ALL JOURNAL ARTICLES</a>
+        <a href={article.sourceUrl} target="_blank" rel="noreferrer" className="label view">ORIGINAL ARTICLE ↗</a>
       </div>
     </main>
   );
@@ -1820,6 +1817,9 @@ const css = `
 .journal-content-block{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;line-height:1.8}
 .journal-content-block p{margin:0 0 1em}
 .journal-content-block p:last-child{margin-bottom:0}
+.journal-source-note{padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:18px}
+.journal-source-note .view{text-decoration:none}
+.journal-article-bottom{gap:24px;flex-wrap:wrap}
 
 /* SOCIAL */
 
