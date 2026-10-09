@@ -404,12 +404,14 @@ const w = text.split(" ");
 
 
 
+const teamImg = (file) => new URL(`./assets/${file}`, import.meta.url).href;
+
 const TEAM = [
-  { name: "Armands Doķis", role: "Co-founder & Artist", image: "/team/armands-dokis.jpg", tone: "#D6D0C2" },
-  { name: "Edgars Pukitis", role: "Co-founder & Finances", image: "/team/edgars-pukitis.jpg", tone: "#CDC7B8" },
-  { name: "Ugis Fabriciuss", role: "Client Relations Manager", image: "/team/ugis-fabriciuss.jpg", tone: "#E0DBCF" },
-  { name: "Ruslan Novadvorski", role: "Marketing", image: "/team/ruslan-novadvorski.jpg", tone: "#D2CCBE" },
-  { name: "Toms Čivlis", role: "Technical support", image: "/team/toms-civlis.jpg", tone: "#DAD4C7" },
+  { name: "Armands Doķis", role: "Co-founder & Artist", image: teamImg("Armands-profil-new-1.webp"), tone: "#D6D0C2" },
+  { name: "Edgars Pukitis", role: "Co-founder & Finances", image: teamImg("Edgars-profil.webp"), tone: "#CDC7B8" },
+  { name: "Ugis Fabriciuss", role: "Client Relations Manager", image: teamImg("Ugis-profil.webp"), tone: "#E0DBCF" },
+  { name: "Ruslan Novadvorski", role: "Marketing", image: teamImg("Ruslans-profil.webp"), tone: "#D2CCBE" },
+  { name: "Toms Čivlis", role: "Technical support", image: teamImg("Toms-profil.webp"), tone: "#DAD4C7" },
 ];
 
 function TeamPhoto({ member }) {
@@ -742,6 +744,12 @@ const project = WORKS.find((w) => w.slug === slug);
   const scrollToSection = (e, hash) => {
     e.preventDefault();
 
+    // route hashes (#/team, #/project/...) are pages, not in-page anchors
+    if (hash.startsWith("#/")) {
+      window.location.hash = hash;
+      return;
+    }
+
     const id = hash.replace(/^#/, "");
     const target = document.getElementById(id);
 
@@ -857,7 +865,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
                 key={l}
                 href={hash}
                 className="label navlink"
-                onClick={l === "TEAM" ? undefined : (e) => {
+                onClick={(e) => {
                   if (project || team) navigateFromProject(e, hash);
                   else scrollToSection(e, hash);
                 }}
@@ -1282,7 +1290,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
                 key={l}
                 href={hash}
                 className="label navlink"
-                onClick={l === "TEAM" ? undefined : (e) => {
+                onClick={(e) => {
                   if (project || team) navigateFromProject(e, hash);
                   else scrollToSection(e, hash);
                 }}

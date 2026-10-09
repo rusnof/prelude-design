@@ -228,6 +228,8 @@ const REVEAL = [
 
   ".c-head", ".c-info", ".foot > *",
 
+  ".team-kicker", ".team-title", ".team-lead", ".team-member", ".team-end > *",
+
   ".p-top", ".mg-title", ".mg-labels", ".mg-list", ".mg-block", ".mg-cap", ".folio", ".mg-end", ".p-next",
 
 ].join(",");
@@ -376,6 +378,11 @@ const useFile = (id === "hero" || USE_PHOTO_FILES) && src && !failed;
 
 
 
+const isTeamRoute = () => window.location.hash === "#/team";
+
+// page transition timing (ms): old page fades out, then new page fades in (see .page in css)
+const PAGE_FADE_OUT = 380;
+
 const parseRoute = () => {
 
 const m = window.location.hash.match(/^#\/project\/([\w-]+)/);
@@ -404,12 +411,14 @@ const w = text.split(" ");
 
 
 
+const teamImg = (file) => new URL(`./assets/${file}`, import.meta.url).href;
+
 const TEAM = [
-  { name: "Armands Doķis", role: "Co-founder & Artist", image: "/team/armands-dokis.jpg", tone: "#D6D0C2" },
-  { name: "Edgars Pukitis", role: "Co-founder & Finances", image: "/team/edgars-pukitis.jpg", tone: "#CDC7B8" },
-  { name: "Ugis Fabriciuss", role: "Client Relations Manager", image: "/team/ugis-fabriciuss.jpg", tone: "#E0DBCF" },
-  { name: "Ruslan Novadvorski", role: "Marketing", image: "/team/ruslan-novadvorski.jpg", tone: "#D2CCBE" },
-  { name: "Toms Čivlis", role: "Technical support", image: "/team/toms-civlis.jpg", tone: "#DAD4C7" },
+  { name: "Armands Doķis", role: "Co-founder & Artist", image: teamImg("Armands-profil-new-1.png"), tone: "#D6D0C2" },
+  { name: "Edgars Pukitis", role: "Co-founder & Finances", image: teamImg("Edgars-profil.png"), tone: "#CDC7B8" },
+  { name: "Ugis Fabriciuss", role: "Client Relations Manager", image: teamImg("Ugis-profil.png"), tone: "#E0DBCF" },
+  { name: "Ruslan Novadvorski", role: "Marketing", image: teamImg("Ruslans-profil.png"), tone: "#D2CCBE" },
+  { name: "Toms Čivlis", role: "Technical support", image: teamImg("Toms-profil.png"), tone: "#DAD4C7" },
 ];
 
 function TeamPhoto({ member }) {
@@ -669,8 +678,13 @@ const shown = JOURNAL.filter((a) => cat === "ALL" || a.cat === cat);
 
 const root = useRef(null);
 
-const [slug, setSlug] = useState(parseRoute);
-  const [team, setTeam] = useState(window.location.hash === "#/team" || window.location.hash === "#/team");
+// route = what the URL hash says right now; view = what is actually on screen.
+  // they differ only during the fade between pages.
+  const [route, setRoute] = useState(() => ({ slug: parseRoute(), team: isTeamRoute() }));
+  const [view, setView] = useState(route);
+  const [pageOut, setPageOut] = useState(false);
+  const slug = view.slug;
+  const team = view.team;
 const [showNav, setShowNav] = useState(true);
 const [hasScrolled, setHasScrolled] = useState(false);
 const navHiddenOnce = useRef(false);
@@ -682,14 +696,35 @@ const project = WORKS.find((w) => w.slug === slug);
 
   useEffect(() => {
     const onHash = () => {
-      setSlug(parseRoute());
-      setTeam(window.location.hash === "#/team" || window.location.hash === "#/team");
+      setRoute({ slug: parseRoute(), team: isTeamRoute() });
     };
 
     window.addEventListener("hashchange", onHash);
 
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
+
+  // smooth page change: fade the current page out, swap it, fade the new one in
+  useEffect(() => {
+    if (route.slug === view.slug && route.team === view.team) {
+      setPageOut(false);
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setView(route);
+      return;
+    }
+
+    setPageOut(true);
+
+    const t = setTimeout(() => {
+      setView(route);
+      setPageOut(false);
+    }, PAGE_FADE_OUT);
+
+    return () => clearTimeout(t);
+  }, [route]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -732,7 +767,7 @@ const project = WORKS.find((w) => w.slug === slug);
     setShowNav(true);
     navHiddenOnce.current = false;
     navRevealed.current = false;
-  }, [slug]);
+  }, [slug, team]);
 
   const navigateFromProject = (e, hash) => {
     e.preventDefault();
@@ -741,6 +776,12 @@ const project = WORKS.find((w) => w.slug === slug);
 
   const scrollToSection = (e, hash) => {
     e.preventDefault();
+
+    // route hashes (#/team, #/project/...) are pages, not in-page anchors
+    if (hash.startsWith("#/")) {
+      window.location.hash = hash;
+      return;
+    }
 
     const id = hash.replace(/^#/, "");
     const target = document.getElementById(id);
@@ -815,7 +856,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
     return () => io.disconnect();
 
-  }, [cat, slug]);
+  }, [cat, slug, team]);
 
 
 
@@ -839,7 +880,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
           href="#top"
           className="brand"
           onClick={(e) => {
-            if (project) navigateFromProject(e, "#top");
+            if (project || team) navigateFromProject(e, "#top");
             else scrollToSection(e, "#top");
           }}
           aria-label="Prelude Design"
@@ -872,6 +913,8 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
       </header>
 
 
+
+      <div className={`page${pageOut ? " page-out" : ""}`}>
 
       {project ? <ProjectPage project={project} /> : team ? <TeamPage /> : (
 
@@ -1238,6 +1281,8 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
       )}
 
+      </div>
+
 
 
       {/* BACK TO TOP */}
@@ -1247,7 +1292,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
           href="#top"
           className="back-top navlink"
           onClick={(e) => {
-            if (project) {
+            if (project || team) {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             } else {
@@ -1919,6 +1964,15 @@ const css = `
 }
 
 
+
+/* PAGE TRANSITION — плавная смена страниц (Home / Team / Project) */
+.pd .page{
+  transition:opacity 900ms cubic-bezier(.2,.6,.2,1),transform 900ms cubic-bezier(.2,.6,.2,1);
+}
+.pd .page.page-out{
+  opacity:0;transform:translateY(12px);
+  transition-duration:380ms;transition-timing-function:ease;
+}
 
 /* REVEAL — медленное проявление при прокрутке */
 
