@@ -1592,20 +1592,20 @@ const css = `
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap');
 
-@font-face{
-  font-family:'Epilogue';
-  src:url('/fonts/Epilogue/Epilogue-VariableFont_wght.ttf') format('truetype');
-  font-style:normal;
-  font-weight:100 900;
-  font-display:swap;
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/fonts/Epilogue-VariableFont_wght.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
 }
 
-@font-face{
-  font-family:'Epilogue';
-  src:url('/fonts/Epilogue/Epilogue-Italic-VariableFont_wght.ttf') format('truetype');
-  font-style:italic;
-  font-weight:100 900;
-  font-display:swap;
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/fonts/Epilogue-Italic-VariableFont_wght.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
 }
 
 
