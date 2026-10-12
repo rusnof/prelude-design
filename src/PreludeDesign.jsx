@@ -6,11 +6,11 @@ const IMAGES = {
 
   hero:      { src: new URL("./assets/hero.jpg", import.meta.url).href, tone: "#DDD8CC", note: "Hand-troweled plaster wall, raking light, vertical crop" },
 
-  immersive: { src: "/prelude/immersive.jpg", tone: "#CFC9BB", note: "Full-width interior with finished wall, wide crop" },
+  immersive: { src: new URL("./assets/LV1_0293.jpg", import.meta.url).href, tone: "#CFC9BB", note: "Studio material studies in progress" },
 
-  material:  { src: "/prelude/material.jpg", tone: "#D9D3C5", note: "Macro: metallic leaf over glaze, layered edge" },
+  material:  { src: new URL("./assets/material-a.JPG", import.meta.url).href, tone: "#D9D3C5", note: "Material study — surface and pigment" },
 
-  materialB: { src: "/prelude/materialB.jpg", tone: "#E4DFD4", note: "Brush and pigment on mixing board" },
+  materialB: { src: new URL("./assets/material-b.JPG", import.meta.url).href, tone: "#E4DFD4", note: "Material study — brushwork and pigment" },
 
   w1: { src: "/prelude/w1.jpg", tone: "#D6D0C2", note: "Project 01 — wall in situ" },
 
@@ -55,147 +55,71 @@ const IMAGES = {
 
 
 const WORKS = [
-
   {
-
-    slug: "villa-mezaparks", n: "01", name: "Villa Mežaparks", title: ["VILLA", "MEŽAPARKS"], img: "w1", cls: "w-a",
-
-    tech: "Lime plaster, mineral glaze, hand-burnished",
-
-    place: "Mežaparks, Riga", year: "2024", area: "86 m² of wall surface",
-
-    heading: "Light, slowly",
-
-    list: ["Made by hand", "Made once", "Riga studio"],
-
-    lead: "A pre-war villa with north-facing rooms and very little direct sun. The brief was to give the main hall depth without making it darker.",
-
+    slug: "water-tower", n: "01", name: "Water Tower", title: ["WATER", "TOWER"], img: "water-tower-0", cls: "w-a",
+    tech: "Collection",
+    place: "Prelude Design", year: "COLLECTION 01", area: "A closer look at the collection",
+    heading: "The Story",
+    list: ["Our collections", "Prelude Design", "Made with intention"],
+    lead: "Every space has a story waiting to be discovered. Water Tower explores the relationship between architectural character and contemporary design, bringing a new perspective to a place shaped by its own history.",
     body: [
-
-      "We built the walls from three coats of lime plaster, each troweled thin and burnished until the surface took on a soft, stone-like sheen. A mineral glaze, tinted warm grey, pulls the light across the room as the day moves.",
-
-      "Samples were tested on site for two weeks before work began. The final surface was made in sections over five weeks, with every joint matched by hand so that no seam can be found.",
-
-      "The stair hall, which receives light only from the north, was treated last. Here the glaze is slightly warmer, so that the plaster holds colour on grey afternoons and never turns cold.",
-
+      "The inspiration begins with the identity of the space itself - its proportions, textures and architectural details. The concept seeks a balance between the raw character of the original structure and a thoughtful, modern visual language.",
+      "A considered combination of materials, finishes and textures gives the project its visual depth. Each element is intended to contribute to a cohesive whole, where materiality, functionality and atmosphere work together."
     ],
-
-    quote: "The room looks different every hour and is never louder.",
-
-    credit: "Client, Villa Mežaparks",
-
-    caps: ["Main hall, morning light.", "Burnished edge, detail.", "Corner junction, hand-matched.", "The stair hall takes its light from the north.", "Glaze test on lime plaster.", "The main hall at dusk.", "North wall, finished.", "Sample boards in the Riga studio."],
-
+    quote: "A collection begins with an idea.",
+    credit: "Prelude Design",
+    caps: ["Water Tower collection.", "Collection detail.", "Material and surface.", "A closer view.", "Details from the collection.", "Texture and composition.", "Collection study.", "Prelude Design."],
     kinds: ["plaster", "streak"],
-
   },
-
   {
-
-    slug: "hotel-kalpaks", n: "02", name: "Hotel Kalpaks, Lounge", title: ["HOTEL", "KALPAKS"], img: "w2", cls: "w-b",
-
-    tech: "Water-based paint, 23ct gold leaf, six layers",
-
-    place: "Old Town, Riga", year: "2025", area: "42 m² of wall surface",
-
-    heading: "Gold, held low",
-
-    list: ["Made by hand", "Six layers", "Riga studio"],
-
-    lead: "A hotel lounge that needed warmth after dark. Candlelight, brass and low ceilings suggested gold, but not the obvious kind.",
-
+    slug: "mackerel", n: "02", name: "Mackerel’s skin", title: ["MACKEREL’S", "SKIN"], img: "mackerel-0", cls: "w-b",
+    tech: "Collection",
+    place: "Prelude Design", year: "COLLECTION 02", area: "A closer look at the collection",
+    heading: "Mackerel’s skin",
+    list: ["Prelude 0398", "Mackerel’s skin", "Prelude Design"],
+    lead: "Mackerel species typically have deeply forked tails and vertical tiger-like stripes on their backs with an iridescent green-blue quality.",
     body: [
-
-      "Gold leaf was laid in broken sheets over a deep, water-based ground, then glazed and partly removed. The wall keeps its tone in dim light and opens up where the lamps reach it.",
-
-      "Six layers were needed to reach the depth we wanted. Each was left to cure fully before the next, which set the pace of the whole project.",
-
-      "Lamps were placed after the wall was finished, not before. We adjusted the final glaze on site, at night, with the lighting on, until the surface read evenly from every seat.",
-
+      "Many are restricted in their distribution ranges and live in separate populations or fish stocks based on geography. Some stocks migrate in large schools along the coast to suitable spawning grounds, where they spawn in fairly shallow waters.",
+      "After spawning they return the way they came in smaller schools to suitable feeding grounds, often near an area of upwelling. From there they may move offshore into deeper waters and spend the winter in relative inactivity. Other stocks migrate across oceans."
     ],
-
-    quote: "At night the wall seems to hold the light a little longer.",
-
-    credit: "Hotel management",
-
-    caps: ["Lounge wall at evening.", "Leaf edge, macro.", "Ground colour test.", "The seating alcove takes the warmest light.", "Gold leaf before glazing.", "Full wall with the lamps on.", "Detail at the lounge entrance.", "Layers, shown in section."],
-
+    quote: "A study in colour, texture and movement.",
+    credit: "Prelude 0398",
+    caps: ["Mackerel’s skin.", "Prelude 0398.", "Blue and gold surface.", "A closer view.", "Texture and composition.", "Layers of colour.", "Surface study.", "Mackerel’s skin."],
     kinds: ["leaf", "streak"], accent: "#C2AA72",
-
   },
-
   {
-
-    slug: "private-residence-jurmala", n: "03", name: "Private Residence, Jūrmala", title: ["JŪRMALA", "RESIDENCE"], img: "w3", cls: "w-c",
-
-    tech: "Pigmented plaster, wax finish",
-
-    place: "Jūrmala", year: "2023", area: "120 m² of wall surface",
-
-    heading: "Sand and salt",
-
-    list: ["Made by hand", "Colour in the plaster", "Riga studio"],
-
-    lead: "A house between pine forest and sea. The walls had to feel like sand and salt air without imitating either.",
-
+    slug: "posters", n: "03", name: "Posters", title: ["PRINTED", "POSTERS"], img: "w3", cls: "w-c",
+    tech: "Printed posters",
+    place: "Prelude Design", year: "COLLECTION 03", area: "Printed works",
+    heading: "Posters",
+    list: ["Printed works", "Prelude Design", "More to come"],
+    lead: "A collection of posters printed by Prelude Design. This page will bring together the available designs, photography and details about the prints.",
     body: [
-
-      "Pigments were mixed into the plaster itself, so the colour runs through the material rather than sitting on top. A final wax coat gives the surface a low, even glow.",
-
-      "Because the house is lived in all year, every wall was finished to be touched, repaired and left to age gracefully.",
-
-      "Window reveals and corners were finished by hand rather than taped, which leaves a slightly soft edge. It is the detail most visitors notice without knowing why.",
-
+      "Images of the posters and information about the available designs will be added here.",
+      "The collection page will be updated with further details as the printed works are ready to present."
     ],
-
-    quote: "It feels like it has always been part of the house.",
-
-    credit: "Client, Jūrmala",
-
-    caps: ["Living room, afternoon.", "Plaster grain, detail.", "Hallway.", "The stair wall catches the evening sun.", "Pigment samples.", "Living room, early light.", "Window reveal, finished by hand.", "Bedroom, early light."],
-
+    quote: "Ideas made visible.",
+    credit: "Prelude Design",
+    caps: ["Printed poster collection.", "Poster detail.", "Print and paper.", "A closer view.", "Poster design.", "Printed detail.", "Collection study.", "Prelude Design."],
     kinds: ["fine", "plaster"],
-
   },
-
   {
-
-    slug: "gallery-stairwell", n: "04", name: "Gallery Stairwell", title: ["GALLERY", "STAIRWELL"], img: "w4", cls: "w-d",
-
-    tech: "Oxidised copper leaf, sealed matte",
-
-    place: "Riga", year: "2025", area: "64 m² across three floors",
-
-    heading: "One wall, three floors",
-
-    list: ["Made by hand", "One continuous wall", "Riga studio"],
-
-    lead: "A stairwell that connects three floors of a gallery and is seen from every one of them. The wall had to read as a single surface in motion.",
-
+    slug: "customization", n: "04", name: "Customization", title: ["CUSTOM", "IZATION"], img: "w4", cls: "w-d",
+    tech: "Custom-made possibilities",
+    place: "Prelude Design", year: "COLLECTION 04", area: "Created around your brief",
+    heading: "Customization",
+    list: ["Made for your brief", "Individual approach", "Prelude Design"],
+    lead: "Customization is where a starting point can be adapted to a specific idea, space or brief. More examples and information will be added to this collection.",
     body: [
-
-      "Copper leaf was oxidised by hand in stages, with greens, browns and reds developing in the layers. The surface was sealed matte to keep the colour from changing further.",
-
-      "The wall was made as one continuous composition, planned on paper first and then worked floor by floor.",
-
-      "A matte sealer fixed the final colour. We kept a small panel of every stage, so any future repair can be matched to the original.",
-
+      "This page will showcase examples of customized work and explain the possibilities in more detail.",
+      "Further photography and practical information will be added as the collection is developed."
     ],
-
-    quote: "You see a different wall from every landing.",
-
-    credit: "Gallery director",
-
-    caps: ["Stairwell, ground floor.", "Oxidation, macro.", "Second landing.", "Looking up from the entrance floor.", "Oxidation test panels.", "The top-floor wall, finished.", "Looking up.", "Panel kept from every stage."],
-
+    quote: "A starting point, made your own.",
+    credit: "Prelude Design",
+    caps: ["Customization collection.", "Customized detail.", "Material and surface.", "A closer view.", "Made for a specific brief.", "Details in progress.", "Collection study.", "Prelude Design."],
     kinds: ["leaf", "streak"], accent: "#A56F4E",
-
   },
-
 ];
-
-
-
 
 
 const PROCESS = [
@@ -322,29 +246,7 @@ const REVEAL = [
 
 
 
-const NAV = ["WORKS", "STUDIO", "JOURNAL", "TEAM", "CONTACT"];
-
-
-
-const USE_PHOTO_FILES = false;
-
-const SHOW_CAPTIONS = false;
-
-
-
-const KIND = {
-
-  hero: ["plaster"], immersive: ["plaster"], material: ["leaf", "#B9A26B"],
-
-  materialB: ["streak"], w1: ["plaster"], w2: ["leaf", "#C2AA72"],
-
-  w3: ["fine"], w4: ["leaf", "#A56F4E"], studio: ["streak"],
-
-  j1: ["streak"], j2: ["leaf", "#B9A26B"], j3: ["plaster"], j4: ["fine"],
-
-  s1: ["fine"], s2: ["streak"], s3: ["plaster"], s4: ["fine"], s5: ["plaster"],
-
-};
+const NAV = ["COLLECTIONS", "STUDIO", "JOURNAL", "TEAM", "CONTACT"];
 
 
 
@@ -356,11 +258,40 @@ WORKS.forEach((w) => {
 
 const id = `${w.slug}-${i}`;
 
-    IMAGES[id] = { src: `/prelude/${id}.jpg`, tone: GTONES[(i + w.n.charCodeAt(1)) % 6], note: `${w.name} — ${i === 0 ? "lead image" : w.caps[i - 1]}` };
-
-const base = w.kinds[0];
-
-    KIND[id] = i % 2 === 0 ? [base, w.accent] : [w.kinds[1], w.accent];
+    const waterTowerFiles = [
+      "water-tower-cover.JPG",
+      "water-tower-1.JPG",
+      "water-tower-2.JPG",
+      "water-tower-3.JPG",
+      "water-tower-4.JPG",
+      "water-tower-5.JPG",
+      "water-tower-6.JPG",
+      "water-tower-7.JPG",
+      "water-tower-8.JPG",
+    ];
+    const mackerelFiles = [
+      "meckerel-cover.jpg",
+      "meckerel-1.jpg",
+      "meckerel-2.jpg",
+      "meckerel-3.JPG",
+      "meckerel-4.JPG",
+      "meckerel-5.JPG",
+      "meckerel-6.jpeg",
+      "meckerel-7.jpeg",
+      "meckerel-8.jpeg",
+    ];
+    const projectFiles = w.slug === "water-tower"
+      ? waterTowerFiles
+      : w.slug === "mackerel"
+        ? mackerelFiles
+        : null;
+    IMAGES[id] = {
+      src: projectFiles
+        ? new URL(`./assets/${projectFiles[i]}`, import.meta.url).href
+        : `/prelude/${id}.jpg`,
+      tone: GTONES[(i + w.n.charCodeAt(1)) % 6],
+      note: `${w.name} — ${i === 0 ? "lead image" : w.caps[i - 1]}`
+    };
 
   }
 
@@ -368,100 +299,37 @@ const base = w.kinds[0];
 
 
 
-const rgb = (h) => [1, 3, 5].map((i) => (parseInt(h.slice(i, i + 2), 16) / 255).toFixed(3));
+const FALLBACK_IMAGE = new URL("./assets/material-a.JPG", import.meta.url).href;
 
-const layer = (freq, oct, seed, color, a, b, op) => {
-
-const [r, g, bl] = rgb(color);
-
-  return `<filter id="f${seed}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="${freq}" numOctaves="${oct}" seed="${seed}"/><feColorMatrix values="0 0 0 0 ${r} 0 0 0 0 ${g} 0 0 0 0 ${bl} ${a} 0 0 0 ${b}"/></filter><rect width="1000" height="1000" filter="url(#f${seed})" opacity="${op}"/>`;
-
-};
-
-
-
-function texture(id) {
-
-const { tone } = IMAGES[id];
-
-const [kind, accent] = KIND[id] || ["plaster"];
-
-const seed = Object.keys(IMAGES).indexOf(id) * 7 + 3;
-
-let body = "";
-
-  if (kind === "plaster") {
-
-    body = layer(0.006, 5, seed, "#6B6256", 1.6, -0.6, 0.38) +
-
-           layer(0.013, 4, seed + 1, "#FFFFFF", 1.7, -0.75, 0.55) +
-
-           layer(0.9, 2, seed + 2, "#4A4338", 1.2, -0.4, 0.07);
-
-  } else if (kind === "fine") {
-
-    body = layer(0.02, 4, seed, "#6B6256", 1.5, -0.55, 0.3) +
-
-           layer(0.6, 3, seed + 1, "#FFFFFF", 1.4, -0.55, 0.35) +
-
-           layer(1.1, 2, seed + 2, "#4A4338", 1.2, -0.4, 0.1);
-
-  } else if (kind === "streak") {
-
-    body = layer("0.0025 0.05", 4, seed, "#6B6256", 1.7, -0.7, 0.4) +
-
-           layer("0.004 0.12", 3, seed + 1, "#FFFFFF", 1.7, -0.8, 0.5) +
-
-           layer(0.9, 2, seed + 2, "#4A4338", 1.2, -0.4, 0.06);
-
-  } else {
-
-    body = layer(0.007, 5, seed, "#5C5347", 1.6, -0.6, 0.45) +
-
-           layer(0.018, 3, seed + 1, accent, 11, -5.6, 0.9) +
-
-           layer(0.05, 2, seed + 2, "#E6D6A8", 11, -6.3, 0.5) +
-
-           layer(0.9, 2, seed + 3, "#2E2A24", 1.2, -0.4, 0.08);
-
-  }
-
-const base = kind === "leaf" ? "#8E8470" : tone;
-
-const svg = `<svg xmlns="http\://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice"><rect width="1000" height="1000" fill="${base}"/>${body}</svg>`;
-
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-
-}
-
-
-
+/** Real photos only: requested photo -> material-a.JPG -> neutral placeholder. */
 function Photo({ id, className = "", caption = true }) {
+  const image = IMAGES[id];
+  const src = image?.src;
+  const tone = image?.tone || "#D6D0C2";
+  const note = image?.note || "Prelude Design";
+  const [imageSrc, setImageSrc] = useState(src || FALLBACK_IMAGE);
+  const [failed, setFailed] = useState(false);
 
-const { src, tone, note } = IMAGES[id];
+  useEffect(() => {
+    setImageSrc(src || FALLBACK_IMAGE);
+    setFailed(false);
+  }, [id, src]);
 
-const [failed, setFailed] = useState(false);
-
-const useFile = (id === "hero" || id === "j1" || id === "j2" || id === "j3" || id === "wallsCover" || id === "wallsDetail1" || id === "wallsDetail2" || id === "dekoStudio" || id === "dekoDetails" || USE_PHOTO_FILES) && src && !failed;
+  const handleError = () => {
+    if (imageSrc !== FALLBACK_IMAGE) setImageSrc(FALLBACK_IMAGE);
+    else setFailed(true);
+  };
 
   return (
-
     <figure className={`photo ${className}`} style={{ background: tone }}>
-
-      <img src={useFile ? src : texture(id)} alt={note} loading="lazy" onError={() => setFailed(true)} />
-
-      {!useFile && SHOW_CAPTIONS && caption && (
-
-        <figcaption className="plate">PHOTOGRAPH — {note}</figcaption>
-
+      {!failed ? (
+        <img src={imageSrc} alt={note} loading="lazy" onError={handleError} />
+      ) : (
+        <div className="photo-fallback" role="img" aria-label={`${note} — image unavailable`} />
       )}
-
     </figure>
-
   );
-
 }
-
 
 
 const isTeamRoute = () => window.location.hash === "#/team";
@@ -471,7 +339,7 @@ const PAGE_FADE_OUT = 380;
 
 const parseRoute = () => {
 
-const m = window.location.hash.match(/^#\/project\/([\w-]+)/);
+const m = window.location.hash.match(/^#\/(?:collection|project)\/([\w-]+)/);
 
   return m ? m[1] : null;
 
@@ -513,18 +381,25 @@ const TEAM = [
 ];
 
 function TeamPhoto({ member }) {
+  const [imageSrc, setImageSrc] = useState(member.image);
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setImageSrc(member.image);
+    setFailed(false);
+  }, [member.image]);
+
+  const handleError = () => {
+    if (imageSrc !== FALLBACK_IMAGE) setImageSrc(FALLBACK_IMAGE);
+    else setFailed(true);
+  };
+
   return (
     <figure className="team-photo" style={{ background: member.tone }}>
       {!failed ? (
-        <img
-          src={member.image}
-          alt={member.name}
-          loading="lazy"
-          onError={() => setFailed(true)}
-        />
+        <img src={imageSrc} alt={member.name} loading="lazy" onError={handleError} />
       ) : (
-        <img src={texture("hero")} alt="" aria-hidden="true" />
+        <div className="team-photo-fallback" role="img" aria-label={`${member.name} — image unavailable`} />
       )}
     </figure>
   );
@@ -669,9 +544,9 @@ const folio = (n) => (
 
     <div className="folio">
 
-      <p className="label muted">{n}    PRELUDE DESIGN    WORKS</p>
+      <p className="label muted">{n}    PRELUDE DESIGN    COLLECTIONS</p>
 
-      <p className="label muted">WORKS    PRELUDE DESIGN    {n + 1}</p>
+      <p className="label muted">COLLECTIONS    PRELUDE DESIGN    {n + 1}</p>
 
     </div>
 
@@ -692,7 +567,7 @@ const folio = (n) => (
             e.preventDefault();
             window.location.hash = "#works";
           }}
-        >← ALL WORKS</a>
+        >← ALL COLLECTIONS</a>
 
         <span className="label muted">{project.n} / {String(WORKS.length).padStart(2, "0")}</span>
 
@@ -830,13 +705,13 @@ const folio = (n) => (
 
 
 
-      <a href={`#/project/${next.slug}`} className="p-next">
+      <a href={`#/collection/${next.slug}`} className="p-next">
 
         <span className="label muted">NEXT PROJECT {next.n}</span>
 
         <span className="serif p-next-name">{next.name}</span>
 
-        <span className="label view">VIEW PROJECT →</span>
+        <span className="label view">VIEW COLLECTION →</span>
 
       </a>
 
@@ -1083,7 +958,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
         <nav>
 
           {NAV.map((l) => {
-            const hash = l === "TEAM" ? "#/team" : `#${l.toLowerCase()}`;
+            const hash = l === "TEAM" ? "#/team" : l === "COLLECTIONS" ? "#works" : `#${l.toLowerCase()}`;
 
             return (
               <a
@@ -1255,13 +1130,13 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
 
 
-        {/* 06 WORKS */}
+        {/* 06 OUR COLLECTIONS */}
 
         <section className="sec works" id="works">
 
           <div className="sec-head">
 
-            <p className="label muted">FEATURED WORKS</p>
+            <p className="label muted">OUR COLLECTIONS</p>
 
             <p className="label muted">2022 — 2026</p>
 
@@ -1273,7 +1148,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
               <article key={w.n} className={`work ${w.cls}`}>
 
-                <a href={`#/project/${w.slug}`} className="work-link">
+                <a href={`#/collection/${w.slug}`} className="work-link">
 
                   <Photo id={w.img} className="work-img" />
 
@@ -1285,7 +1160,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
                     <p className="body small muted">{w.tech}</p>
 
-                    <span className="label view">VIEW PROJECT →</span>
+                    <span className="label view">VIEW COLLECTION →</span>
 
                   </div>
 
@@ -1522,7 +1397,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
         <nav className="foot-nav">
 
           {NAV.map((l) => {
-            const hash = l === "TEAM" ? "#/team" : `#${l.toLowerCase()}`;
+            const hash = l === "TEAM" ? "#/team" : l === "COLLECTIONS" ? "#works" : `#${l.toLowerCase()}`;
 
             return (
               <a
@@ -1655,6 +1530,7 @@ const css = `
 .photo{position:relative;overflow:hidden;width:100%}
 
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.photo-fallback{position:absolute;inset:0;background:linear-gradient(135deg,#E2DED5 0%,#D5D0C5 100%)}
 
 .plate{position:absolute;left:14px;bottom:12px;right:14px;font-size:10px;letter-spacing:0.18em;
 
@@ -2462,6 +2338,7 @@ const css = `
 .team-member:nth-child(5){grid-column:4 / 9;margin-top:clamp(20px,4vw,60px)}
 .team-photo{width:100%;aspect-ratio:3/4;overflow:hidden}
 .team-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1600ms cubic-bezier(.2,.6,.2,1)}
+.team-photo-fallback{width:100%;height:100%;background:linear-gradient(135deg,#E2DED5 0%,#D5D0C5 100%)}
 .team-member:hover .team-photo img{transform:scale(1.025)}
 .team-meta{padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:20px}
 .team-name{font-size:clamp(24px,2.4vw,38px);line-height:1}
