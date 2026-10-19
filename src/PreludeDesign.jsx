@@ -20,7 +20,7 @@ const IMAGES = {
 
   w4: { src: "/prelude/w4.jpg", tone: "#D2CCBE", note: "Project 04 — detail" },
 
-  studio: { src: "/prelude/studio.jpg", tone: "#D4CEC0", note: "The artist at work in the Riga studio" },
+  studio: { src: new URL("./assets/studio.jpg", import.meta.url).href, tone: "#D4CEC0", note: "The artist at work in the Riga studio" },
 
   j1: { src: new URL("./assets/deko-magazine-feature-prelude-design.jpg.webp", import.meta.url).href, tone: "#DAD4C7", note: "Prelude Design featured in DEKO Magazine" },
 
@@ -40,15 +40,15 @@ const IMAGES = {
 
   j4: { src: "/prelude/j4.jpg", tone: "#D5CFC2", note: "Journal — people" },
 
-  s1: { src: "/prelude/s1.jpg", tone: "#D8D2C5", note: "Studio floor, samples" },
+  s1: { src: new URL("./assets/studio-1.jpg", import.meta.url).href, tone: "#D8D2C5", note: "Studio floor, samples" },
 
-  s2: { src: "/prelude/s2.jpg", tone: "#CBC5B7", note: "Hands, pigment" },
+  s2: { src: new URL("./assets/studio-2.jpg", import.meta.url).href, tone: "#CBC5B7", note: "Hands, pigment" },
 
-  s3: { src: "/prelude/s3.jpg", tone: "#E2DDD2", note: "Sample on site" },
+  s3: { src: new URL("./assets/studio-3.jpg", import.meta.url).href, tone: "#E2DDD2", note: "Sample on site" },
 
-  s4: { src: "/prelude/s4.jpg", tone: "#D1CBBD", note: "Tools" },
+  s4: { src: new URL("./assets/studio-4.jpg", import.meta.url).href, tone: "#D1CBBD", note: "Tools" },
 
-  s5: { src: "/prelude/s5.jpg", tone: "#DBD5C8", note: "Wall, late light" },
+  s5: { src: new URL("./assets/studio-5.jpg", import.meta.url).href, tone: "#DBD5C8", note: "Wall, late light" },
 
 };
 
@@ -88,15 +88,15 @@ const WORKS = [
     kinds: ["leaf", "streak"], accent: "#C2AA72",
   },
   {
-    slug: "posters", n: "03", name: "Posters", title: ["PRINTED", "POSTERS"], img: "w3", cls: "w-c",
+    slug: "posters", n: "03", name: "Posters", title: ["PRINTED", "POSTERS"], img: "posters-0", cls: "w-c",
     tech: "Printed posters",
     place: "Prelude Design", year: "COLLECTION 03", area: "Printed works",
     heading: "Posters",
-    list: ["Printed works", "Prelude Design", "More to come"],
-    lead: "A collection of posters printed by Prelude Design. This page will bring together the available designs, photography and details about the prints.",
+    list: ["Printed works", "Poster collection", "Prelude Design"],
+    lead: "A collection of posters by Prelude Design, bringing together graphic compositions, printed imagery and visual studies.",
     body: [
-      "Images of the posters and information about the available designs will be added here.",
-      "The collection page will be updated with further details as the printed works are ready to present."
+      "Each poster is presented as part of a wider visual collection, exploring composition, colour and the relationship between image and typography.",
+      "The gallery brings together selected printed works from the Prelude Design archive."
     ],
     quote: "Ideas made visible.",
     credit: "Prelude Design",
@@ -104,7 +104,7 @@ const WORKS = [
     kinds: ["fine", "plaster"],
   },
   {
-    slug: "customization", n: "04", name: "Customization", title: ["CUSTOM", "IZATION"], img: "w4", cls: "w-d",
+    slug: "customization", n: "04", name: "Customization", title: ["CUSTOM", "IZATION"], img: "customization-0", cls: "w-d",
     tech: "Custom-made possibilities",
     place: "Prelude Design", year: "COLLECTION 04", area: "Created around your brief",
     heading: "Customization",
@@ -280,13 +280,39 @@ const id = `${w.slug}-${i}`;
       "meckerel-7.jpeg",
       "meckerel-8.jpeg",
     ];
+    // customization-7.jpg is the featured/cover image for this collection.
+    const customizationFiles = [
+      "customization-7.jpg",
+      "customization-2.jpg",
+      "customization-3.jpg",
+      "customization.jpg",
+      "LV1_0535_Lauris_Viksne.webp",
+      "customization-4.jpg",
+      "customization-5.jpg",
+      "customization-6.jpg",
+    ];
+    const postersFiles = [
+      "posters-cover.jpg",
+      "posters-1.jpg",
+      "posters-2.jpg",
+      "posters-3.jpg",
+      "posters-4.jpg",
+      "posters-5.jpg",
+      "posters-6.jpg",
+      "posters-7.jpg",
+      "posters-8.JPG",
+    ];
     const projectFiles = w.slug === "water-tower"
       ? waterTowerFiles
       : w.slug === "mackerel"
         ? mackerelFiles
-        : null;
+        : w.slug === "customization"
+          ? customizationFiles
+          : w.slug === "posters"
+            ? postersFiles
+            : null;
     IMAGES[id] = {
-      src: projectFiles
+      src: projectFiles?.[i]
         ? new URL(`./assets/${projectFiles[i]}`, import.meta.url).href
         : `/prelude/${id}.jpg`,
       tone: GTONES[(i + w.n.charCodeAt(1)) % 6],
@@ -302,10 +328,9 @@ const id = `${w.slug}-${i}`;
 const FALLBACK_IMAGE = new URL("./assets/material-a.JPG", import.meta.url).href;
 
 /** Real photos only: requested photo -> material-a.JPG -> neutral placeholder. */
-function Photo({ id, className = "", caption = true }) {
+function Photo({ id, className = "", caption = true, loading = "lazy", fetchPriority }) {
   const image = IMAGES[id];
   const src = image?.src;
-  const tone = image?.tone || "#D6D0C2";
   const note = image?.note || "Prelude Design";
   const [imageSrc, setImageSrc] = useState(src || FALLBACK_IMAGE);
   const [failed, setFailed] = useState(false);
@@ -321,9 +346,9 @@ function Photo({ id, className = "", caption = true }) {
   };
 
   return (
-    <figure className={`photo ${className}`} style={{ background: tone }}>
+    <figure className={`photo ${className}`}>
       {!failed ? (
-        <img src={imageSrc} alt={note} loading="lazy" onError={handleError} />
+        <img src={imageSrc} alt={note} loading={loading} fetchPriority={fetchPriority} onError={handleError} />
       ) : (
         <div className="photo-fallback" role="img" aria-label={`${note} — image unavailable`} />
       )}
@@ -395,7 +420,7 @@ function TeamPhoto({ member }) {
   };
 
   return (
-    <figure className="team-photo" style={{ background: member.tone }}>
+    <figure className="team-photo">
       {!failed ? (
         <img src={imageSrc} alt={member.name} loading="lazy" onError={handleError} />
       ) : (
@@ -744,6 +769,7 @@ const root = useRef(null);
   const team = view.team;
   const journalSlug = view.journalSlug;
 const [showNav, setShowNav] = useState(true);
+const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 const [hasScrolled, setHasScrolled] = useState(false);
 const navHiddenOnce = useRef(false);
 const navRevealed = useRef(false);
@@ -955,7 +981,19 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
           <img src="/logo-black.svg" alt="Prelude Design" />
         </a>
 
-        <nav>
+        <button
+          type="button"
+          className={`mobile-menu-toggle${mobileMenuOpen ? " is-open" : ""}`}
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+        </button>
+
+        <nav id="primary-navigation" className={mobileMenuOpen ? "mobile-menu-open" : ""}>
 
           {NAV.map((l) => {
             const hash = l === "TEAM" ? "#/team" : l === "COLLECTIONS" ? "#works" : `#${l.toLowerCase()}`;
@@ -966,6 +1004,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
                 href={hash}
                 className="label navlink"
                 onClick={(e) => {
+                  setMobileMenuOpen(false);
                   if (project || team || journalArticle) navigateFromProject(e, hash);
                   else scrollToSection(e, hash);
                 }}
@@ -1017,7 +1056,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
           </div>
 
-          <Photo id="hero" className="hero-img" />
+          <Photo id="hero" className="hero-img" loading="eager" fetchPriority="high" />
 
           <a
             href="#philosophy"
@@ -1396,7 +1435,7 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
         <nav className="foot-nav">
 
-          {NAV.map((l) => {
+          {NAV.filter((l) => l !== "CONTACT").map((l) => {
             const hash = l === "TEAM" ? "#/team" : l === "COLLECTIONS" ? "#works" : `#${l.toLowerCase()}`;
 
             return (
@@ -1416,40 +1455,17 @@ const base = hero ? (el.matches(".photo") ? 250 : 750) : 0;
 
         </nav>
 
-        <p className="label foot-soc">
-
-          <a
-            href="https://www.instagram.com/by.prelude/"
-            target="_blank"
-            rel="noreferrer"
-            className="navlink"
-          >
-            Instagram
+        <div className="foot-soc" aria-label="Social media">
+          <a href="https://www.instagram.com/by.prelude/" target="_blank" rel="noreferrer" className="foot-social-link" aria-label="Instagram">
+            <img src={new URL("./assets/instagram.svg", import.meta.url).href} alt="" aria-hidden="true" />
           </a>
-
-            /  
-
-          <a
-            href="https://www.linkedin.com/company/prelude-design-studio"
-            target="_blank"
-            rel="noreferrer"
-            className="navlink"
-          >
-            LinkedIn
+          <a href="https://www.linkedin.com/company/prelude-design-studio" target="_blank" rel="noreferrer" className="foot-social-link" aria-label="LinkedIn">
+            <img src={new URL("./assets/linkedin.svg", import.meta.url).href} alt="" aria-hidden="true" />
           </a>
-
-            /  
-
-          <a
-            href="https://www.facebook.com/prelude.designs"
-            target="_blank"
-            rel="noreferrer"
-            className="navlink"
-          >
-            Facebook
+          <a href="https://www.facebook.com/prelude.designs" target="_blank" rel="noreferrer" className="foot-social-link" aria-label="Facebook">
+            <img src={new URL("./assets/facebook.svg", import.meta.url).href} alt="" aria-hidden="true" />
           </a>
-
-        </p>
+        </div>
 
         <p className="label muted foot-c">© 2026 Prelude Design</p>
 
@@ -1593,6 +1609,11 @@ const css = `
 }
 
 .nav nav,.foot-nav{display:flex;gap:clamp(14px,3vw,40px)}
+.mobile-menu-toggle{display:none;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.mobile-menu-toggle span{display:block;width:24px;height:1px;background:currentColor;transition:transform 250ms ease}
+.mobile-menu-toggle span+span{margin-top:7px}
+.mobile-menu-toggle.is-open span:first-child{transform:translateY(4px) rotate(45deg)}
+.mobile-menu-toggle.is-open span:last-child{transform:translateY(-4px) rotate(-45deg)}
 
 .brand{display:flex;align-items:center;flex-shrink:0}
 .brand img{display:block;width:clamp(120px,11vw,170px);height:auto}
@@ -1925,11 +1946,14 @@ const css = `
 
 .foot > :nth-child(1){grid-column:1 / 4}
 
-.foot-nav{grid-column:4 / 9}
+.foot-nav{grid-column:4 / 9;min-width:0;flex-wrap:wrap;row-gap:12px}
 
-.foot-soc{grid-column:9 / 12}
+.foot-soc{grid-column:9 / 10;display:flex;align-items:center;align-self:center;justify-content:center;gap:22px;min-width:0;line-height:1}
+.foot-social-link{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;flex:0 0 24px;color:#171717;line-height:0;vertical-align:middle;transition:opacity 500ms ease}
+.foot-social-link:hover{opacity:.6}
+.foot-social-link img{display:block;width:22px;height:22px;object-fit:contain;filter:brightness(0) saturate(100%)}
 
-.foot-c{grid-column:12 / 13;text-align:right;white-space:nowrap}
+.foot-c{grid-column:10 / 13;text-align:right;white-space:nowrap;min-width:0}
 
 
 
@@ -1937,14 +1961,18 @@ const css = `
 
 @media (max-width:820px){
 
-  .nav{padding:18px var(--pad)}
+  .nav{padding:18px var(--pad);min-height:72px}
+  .mobile-menu-toggle{display:block;flex:0 0 auto;width:32px;height:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-left:auto;z-index:2}
+  .nav nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;padding:12px var(--pad) 22px;background:rgba(245,244,240,.98);border-bottom:1px solid var(--line);box-shadow:0 14px 24px rgba(23,23,23,.05)}
+  .nav nav.mobile-menu-open{display:flex}
+  .nav nav a{display:block;width:100%;padding:15px 0;font-size:12px;letter-spacing:.2em;border-bottom:1px solid var(--line)}
+  .nav nav a:last-child{border-bottom:0}
   .nav.nav-scrolled{
     background:rgba(245,244,240,.72);
     -webkit-backdrop-filter:blur(16px) saturate(120%);
     backdrop-filter:blur(16px) saturate(120%);
   }
 
-  .nav nav{gap:14px}
 
   .nav .label{font-size:10px;letter-spacing:0.16em}
 
@@ -2035,7 +2063,9 @@ const css = `
 
   .studio-img{aspect-ratio:4/5}
 
-  .studio-text{padding:0 var(--pad);margin-top:40px;gap:40px}
+  .studio-text{padding:0 var(--pad);margin-top:40px;gap:40px;min-width:0}
+  .studio-text .s-head{font-size:clamp(32px,9.2vw,48px);line-height:1.02;max-width:100%;overflow-wrap:normal;word-break:normal}
+  .studio-text .pull{max-width:100%;overflow-wrap:anywhere}
 
 
 
@@ -2083,14 +2113,36 @@ const css = `
 
 
 
-  .foot > *{margin-bottom:18px}
+  .foot{display:flex;flex-direction:column;align-items:flex-start;gap:22px;padding:28px var(--pad) 32px}
+  .foot > *{margin:0;max-width:100%}
+  .footer-logo{width:120px;max-width:42vw}
+  .foot-nav{display:flex;flex-wrap:wrap;gap:14px 20px;width:100%}
+  .foot-soc{display:flex;align-items:center;justify-content:flex-start;gap:22px;margin:0;width:100%;min-height:24px}
+  .foot-social-link{width:26px;height:26px;flex-basis:26px}
+  .foot-social-link img{width:22px;height:22px}
+  .foot-c{display:block;text-align:left;white-space:normal;line-height:1.6;width:100%;font-size:10px}
 
-  .foot-nav{flex-wrap:wrap}
 
-  .foot-c{text-align:left}
-
+  /* Keep long headings and project content inside narrow viewports. */
+  .headline,.display,.team-title,.journal-article-title,.mg-title,.c-head{max-width:100%;overflow-wrap:anywhere}
+  .team-page{min-width:0}
+  .team-meta{gap:8px}
+  .team-role{white-space:normal;overflow-wrap:anywhere}
+  .mg-labels{flex-wrap:wrap}
+  .mg-list li{overflow-wrap:anywhere}
+  .journal-article-body,.journal-article-copy,.journal-editorial-copy{min-width:0}
+  .journal-article-gallery{max-width:100%}
+  .p-next-name{overflow-wrap:anywhere}
 }
 
+@media (max-width:380px){
+  .brand img{width:112px}
+  .hero .display{font-size:clamp(54px,18vw,76px)}
+  .studio-text .s-head{font-size:30px}
+  .c-head{font-size:clamp(31px,9.5vw,40px)}
+  .foot-nav{gap:12px 16px}
+  .label{letter-spacing:.16em}
+}
 
 
 /* PAGE TRANSITION — плавная смена страниц (Home / Team / Project) */
